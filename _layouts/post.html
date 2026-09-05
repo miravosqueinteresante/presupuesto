@@ -1,0 +1,212 @@
+---
+layout: default
+---
+
+<article class="post">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="{{ '/' | relative_url }}">Inicio</a></li>
+      <li><a href="{{ site.categories_path | relative_url }}#{{ page.categories | first | slugify }}">{{ page.categories | first | capitalize }}</a></li>
+      <li aria-current="page">{{ page.title }}</li>
+    </ol>
+  </nav>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "{{ site.url }}/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{ page.categories | first | capitalize }}",
+        "item": "{{ site.url }}{{ site.categories_path }}#{{ page.categories | first | slugify }}"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{ page.title }}",
+        "item": "{{ site.url }}{{ page.url }}"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": {{ page.title | jsonify }},
+    "@id": "{{ site.url }}{{ page.url }}",
+    "url": "{{ site.url }}{{ page.url }}",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".post-title", ".post-excerpt"]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": {{ page.title | jsonify }},
+    "description": {{ page.description | jsonify }},
+    "image": "{{ site.url }}{{ page.image | default: '/assets/images/og-image.png' }}",
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+    "author": { "@id": "https://muchotexto.net/#author", "name": "César Sánchez" },
+    "publisher": {
+      "@id": "https://muchotexto.net/#org",
+      "name": "MuchoTexto",
+      "logo": { "@type": "ImageObject", "url": "{{ site.url }}/assets/images/og-image.png" }
+    },
+    "mainEntityOfPage": "{{ site.url }}{{ page.url }}"
+  }
+  </script>
+  <h1 class="post-title">{{ page.title }}</h1>
+  {%- if page.description -%}
+    <p class="post-excerpt">{{ page.description }}</p>
+  {%- endif -%}
+  <div class="post-meta">
+    <span class="post-date">
+      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {{ page.date | date_to_string }}
+      </time>
+    </span>
+    {%- if page.last_modified_at -%}
+      {%- assign mdate = page.last_modified_at | date_to_xmlschema -%}
+      {%- assign pdate = page.date | date_to_xmlschema -%}
+      {%- if mdate != pdate -%}
+        <span> ~ </span>
+        <span class="post-date-modified">
+          <time datetime="{{ mdate }}" itemprop="dateModified">
+            {{ mdate | date_to_string }}
+          </time>
+        </span>
+      {%- endif -%}
+    {%- endif -%}
+    <span class="post-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+      <a href="{{ '/about' | relative_url }}" rel="author"><span itemprop="name">César Sánchez</span></a>
+    </span>
+    {% if page.categories.size > 0 %}
+      <span> | </span>
+      <span class="post-categories-section">
+        <i class="post-categories-icon">{% include icon.html name='folder' %}</i>
+        <ul class="post-categories">
+          {%- for category in page.categories -%}
+            <li>
+              {% assign slugified_category = category | slugify %}
+              {%- if site.categories_path -%}
+                <a class="post-category" href="{{ site.categories_path | relative_url }}#{{ slugified_category }}">{{ category }}</a>
+              {%- else -%}
+                <span class="post-category">{{ category }}</span>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </span>
+    {% endif %}
+    {% if page.tags.size > 0 %}
+      <span> | </span>
+      <span class="post-tags-section">
+        <i class="post-tags-icon">{% include icon.html name='tag' %}</i>
+        <ul class="post-tags">
+          {%- for tag in page.tags -%}
+            <li>
+              {% assign slugified_tag = tag | slugify %}
+              {%- if site.tags_path -%}
+                <a class="post-tag" href="{{ site.tags_path | relative_url }}#{{ slugified_tag }}">{{ slugified_tag }}</a>
+              {%- else -%}
+                <span class="post-tag">{{ slugified_tag }}</span>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </span>
+    {% endif %}
+  </div>
+
+  {{ content }}
+
+  {% if page.categories contains 'editorial' %}
+    ---
+
+    {% assign date_str = page.date | date: "%Y-%m-%d" %}
+    {% capture linked_pulso_url %}/blog/{{ date_str | replace: "-", "/" }}/{% endcapture %}
+    {% for p in site.posts %}
+      {% if p.url contains linked_pulso_url and p.url != page.url %}
+        {% assign linked_pulso = p %}
+      {% endif %}
+    {% endfor %}
+    {% if linked_pulso %}
+    <p class="post-crosslink">
+      Este análisis se basa en el <a href="{{ linked_pulso.url | relative_url }}">Pulso Paraguay de hoy</a>.
+    </p>
+    {% endif %}
+    <p><em>Esta Editorial fue escrita íntegramente por una inteligencia artificial entrenada para analizar la realidad paraguaya en profundidad. El sistema lee el Pulso Paraguay del día, procesa los acontecimientos desde una perspectiva cultural, filosófica, sociológica y política, y produce este análisis. Cada dato aquí presentado fue extraído exclusivamente de fuentes periodísticas verificadas y publicadas en el Pulso Paraguay. Muchotexto.net cree en la transparencia: esto no lo escribió un humano, pero la reflexión sobre el país es tan real como los hechos que la sustentan.</em></p>
+  {% endif %}
+
+  {% include share.html %}
+
+  <div class="author-bio">
+    <div class="author-bio-avatar"><img src="{{ '/assets/images/cesar-sanchez.webp' | relative_url }}" alt="César Sánchez" width="56" height="56" loading="lazy"></div>
+    <div class="author-bio-content">
+      <p class="author-bio-name">César Sánchez</p>
+      <p class="author-bio-text">Consultor en automatización con IA generativa, anotación de datos para modelos de lenguaje y desarrollo de soluciones basadas en IA aplicada. Fundó en 2005 uno de los primeros medios digitales sobre tecnología en Paraguay y ha trabajado con marcas como Coca-Cola en generación de contenido con IA. Creador del <a href="{{ '/' | relative_url }}">observatorio de IA en Paraguay</a>.</p>
+      <p class="author-bio-links">
+        <a href="{{ '/about/' | relative_url }}">Sobre el autor</a>
+         |
+        <a href="https://x.com/cesanz" target="_blank" rel="noopener noreferrer">Twitter</a>
+         |
+        <a href="https://www.linkedin.com/in/cesar-sanchez-melgarejo/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </p>
+    </div>
+  </div>
+</article>
+
+<aside class="related">
+  <h2 class="related-title">Continuar leyendo</h2>
+  <ul class="related-posts">
+    {% assign primary_tag = page.tags | first %}
+    {% assign same_tag = site.posts | where_exp:"p", "p.tags contains primary_tag" | where_exp:"p", "p.url != page.url" %}
+    {% for post in same_tag limit:3 %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <small><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time></small>
+      </li>
+    {% endfor %}
+  </ul>
+</aside>
+
+{% if page.previous or page.next %}
+  <nav class="post-nav">
+    {% if page.previous %}
+      {% assign show_prev = true %}
+      {% if page.categories contains 'editorial' %}
+        {% assign prev_date = page.previous.date | date: "%Y-%m-%d" %}
+        {% if prev_date == date_str %}
+          {% assign show_prev = false %}
+        {% endif %}
+      {% endif %}
+      {% if show_prev %}
+        <a class="post-nav-prev" href="{{ page.previous.url | relative_url }}">&larr; {{ page.previous.title }}</a>
+      {% endif %}
+    {% endif %}
+    {% if page.next %}
+      {% assign show_next = true %}
+      {% if page.categories contains 'editorial' %}
+        {% assign next_date = page.next.date | date: "%Y-%m-%d" %}
+        {% if next_date == date_str %}
+          {% assign show_next = false %}
+        {% endif %}
+      {% endif %}
+      {% if show_next %}
+        <a class="post-nav-next" href="{{ page.next.url | relative_url }}">{{ page.next.title }} &rarr;</a>
+      {% endif %}
+    {% endif %}
+  </nav>
+{% endif %}

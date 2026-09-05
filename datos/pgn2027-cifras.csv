@@ -1,0 +1,42 @@
+concepto;valor_gs;valor_usd;fuente_id;pagina;dimension
+Total PGN 2027;166322078980116;;D01;1;D1
+Total PGN 2026 (proyecto de ley);149177676821773;;D17;1;D5
+Administracion Central PGN 2027;87905852469505;;D01;1;D2
+Entidades Descentralizadas PGN 2027;78416226510611;;D01;1;D2
+Deuda publica total (jun-2026);;21947000000;D02;5;D1
+Superavit comercial acumulado (jul-2026);;679100000;D02;3;D1
+Ejecucion gasto Administracion Central 1S-2026;28626000000000;;D02;4;D3
+Remuneraciones ejecucion 1S-2026;11752000000000;;D02;4;D3
+Inversion publica 1S-2026;2994000000000;;D02;4;D3Variacion nominal PGN 2027 vs 2026 (%);11.5;;D01;1;D1
+PGN 2027 como % del PIB 2027 (estimado);38.4;;D01;1;D1
+PIB nominal 2027 proyeccion (miles de millones Gs.);433093;;D02;6;D1
+PIB real 2027 var % (proyeccion);4.2;;D02;6;D1
+Inflacion 2027 var % (proyeccion);3.5;;D02;6;D1
+Inflacion 2026 var % (proyeccion);3.3;;D02;6;D1
+Tipo de cambio 2027 proyeccion (Gs/USD);6458;;D02;6;D1
+Deficit tope propuesto 2027 (% PIB);3.9;;D01;36;D1
+Presion tributaria 2027 proyeccion (% PIB);11.2;;D02;7;D1
+Deuda publica jun-2026 (% PIB);34.4;;D02;5;D1
+MEF - Ministerio de Economia y Finanzas;24966321986841;;D01;7;D2
+Ministerio de Salud Publica y Bienestar Social;18168392998474;;D01;8;D2
+Ministerio de Educacion y Ciencias;10450207042878;;D01;8;D2
+Ministerio de Obras Publicas y Comunicaciones;9202327126231;;D01;8;D2
+Ministerio de Desarrollo Social;5623748612337;;D01;8;D2
+Ministerio del Interior;5504384635596;;D01;7;D2
+Poder Judicial y Organismos Auxiliares de Justicia;4252841465355;;D01;8;D2
+Ministerio de Defensa Nacional;3148989697897;;D01;7;D2
+Gobiernos Departamentales;2818771895861;;D01;8;D2
+Presidencia de la Republica;1113526766687;;D01;7;D2
+Gastos corrientes Admin Central PGN 2027;68421713016139;;D01;7;D3
+Gastos corrientes Entidades Descentralizadas PGN 2027;32605885808740;;D01;8;D3
+Gastos de capital Admin Central PGN 2027;14845598994874;;D01;7;D3
+Gastos de capital Entidades Descentralizadas PGN 2027;42668837093984;;D01;8;D3
+Aplicaciones financieras Admin Central PGN 2027;4638540458492;;D01;7;D3
+Aplicaciones financieras Entidades Descentralizadas PGN 2027;3141503607887;;D01;8;D3
+Salud - MSPyBS;18168392998474;;D01;8;D4
+Educacion - MEC;10450207042878;;D01;8;D4
+Infraestructura - MOPC;9202327126231;;D01;8;D4
+Seguridad - Interior + Defensa Nacional;8653374333493;;D01;7;D4
+Proteccion social - Desarrollo Social + MINNA;5781949321304;;D01;8;D4
+Total PGN 2026 (Ley sancionada 7609/2025);149613679046612;;D18;1;D5
+Variacion nominal vs PGN 2026 sancionada (%);11.2;;D18;1;D5

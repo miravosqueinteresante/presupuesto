@@ -1,0 +1,160 @@
+---
+layout: default
+---
+{% assign meses = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,setiembre,octubre,noviembre,diciembre" | split: "," %}
+{% assign d = page.last_modified_at | date: "%-d" %}
+{% assign m = page.last_modified_at | date: "%-m" | minus: 1 %}
+
+<article class="page entity-page">
+  <div class="entity-header">
+    <h1 class="page-title">{{ page.entity_name | default: page.title }}</h1>
+    <p class="entity-subtitle">{{ page.entity_name_full | default: page.title }}</p>
+    {% if page.entity_description %}
+    <p class="entity-desc">{{ page.entity_description }}</p>
+    {% endif %}
+    <div class="entity-meta">
+      <span class="entity-category" data-category="{{ page.entity_category }}">{{ page.entity_category | capitalize }}</span>
+      <span class="entity-updated">Actualizado: {{ d }} de {{ meses[m] }} de {{ page.last_modified_at | date: "%Y" }}</span>
+    </div>
+  </div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Corporation",
+    "name": {{ page.entity_name | default: page.title | jsonify }},
+    "description": {{ page.entity_description | default: page.description | jsonify }},
+    "url": "{{ site.url }}{{ page.url }}",
+    "mainEntityOfPage": "{{ site.url }}{{ page.url }}"
+  }
+  </script>
+
+  {{ content }}
+
+  {% if page.related_articles.size > 0 %}
+  <section class="entity-section">
+    <h2>Artículos relacionados</h2>
+    <ul class="entity-article-list">
+      {% for article in page.related_articles %}
+      <li class="entity-article-item">
+        <a href="{{ article.url }}">{{ article.title }}</a>
+        {% if article.context %}
+        <span class="entity-article-context">{{ article.context }}</span>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if page.entity_laws %}
+  <section class="entity-section">
+    <h2>Leyes y normativas</h2>
+    <ul class="entity-law-list">
+      {% for law in page.entity_laws %}
+      <li>{{ law }}</li>
+      {% endfor %}
+    </ul>
+    <p class="entity-section-more"><a href="/regulacion/">Ver mapa regulatorio completo &rarr;</a></p>
+  </section>
+  {% endif %}
+
+  {% if page.entity_datos_url %}
+  <section class="entity-section">
+    <h2>Datos verificados</h2>
+    <p class="entity-section-more">La serie histórica de esta entidad se publica con fuente, método de extracción y trazabilidad en MuchoTexto Data.</p>
+    <p class="entity-section-more"><a href="{{ page.entity_datos_url }}" rel="noopener noreferrer" target="_blank">{% if page.entity_datos_desc %}{{ page.entity_datos_desc }}{% else %}Explorar los datos &rarr;{% endif %}</a></p>
+  </section>
+  {% endif %}
+
+  {% if page.obs_cronologia %}
+  <section class="entity-section">
+    <h2>En la cronologia</h2>
+    <ul class="entity-timeline-list">
+      {% for item in page.obs_cronologia %}
+      <li>
+        <strong>{{ item.label }}</strong> &mdash;
+        {% if item.url and item.url != '/cronologia/' %}<a href="{{ item.url }}">{{ item.context }}</a>
+        {% else %}{{ item.context }}{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="entity-section-more"><a href="/cronologia/">Ver cronologia completa &rarr;</a></p>
+  </section>
+  {% endif %}
+
+  {% if page.obs_directorio %}
+  <section class="entity-section">
+    <h2>En el directorio</h2>
+    <ul class="entity-directory-list">
+      {% for item in page.obs_directorio %}
+      <li>
+        <a href="{{ item.url }}">{{ item.label }}</a> &mdash; {{ item.context }}
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="entity-section-more"><a href="/directorio/">Ver directorio completo &rarr;</a></p>
+  </section>
+  {% endif %}
+
+  {% if page.obs_regulacion %}
+  <section class="entity-section">
+    <h2>En regulacion</h2>
+    <ul class="entity-regulation-list">
+      {% for item in page.obs_regulacion %}
+      <li>
+        <a href="{{ item.url }}">{{ item.label }}</a> &mdash; {{ item.context }}
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="entity-section-more"><a href="/regulacion/">Ver mapa regulatorio completo &rarr;</a></p>
+  </section>
+  {% endif %}
+
+  {% if page.obs_casos-de-uso %}
+  <section class="entity-section">
+    <h2>Casos de uso</h2>
+    <ul class="entity-casos-list">
+      {% for item in page.obs_casos-de-uso %}
+      <li>
+        <a href="{{ item.url }}">{{ item.label }}</a> &mdash; {{ item.context }}
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="entity-section-more"><a href="/casos-de-uso/">Ver todos los casos de uso &rarr;</a></p>
+  </section>
+  {% endif %}
+
+  {% if page.obs_glosario %}
+  <section class="entity-section">
+    <h2>En el glosario</h2>
+    <ul class="entity-glossary-list">
+      {% for term in page.obs_glosario %}
+      <li>
+        <strong>{{ term.label }}</strong> &mdash; {{ term.context }}
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="entity-section-more"><a href="/glosario/">Ver glosario completo &rarr;</a></p>
+  </section>
+  {% endif %}
+
+  <nav class="entity-back">
+    <a href="/entidades/">&larr; Volver al índice de entidades</a>
+  </nav>
+</article>
+
+<div class="author-bio">
+  <div class="author-bio-avatar"><img src="{{ '/assets/images/cesar-sanchez.webp' | relative_url }}" alt="César Sánchez" width="56" height="56" loading="lazy"></div>
+  <div class="author-bio-content">
+    <p class="author-bio-name">César Sánchez</p>
+    <p class="author-bio-text">Consultor en automatización con IA generativa, anotación de datos para modelos de lenguaje y desarrollo de soluciones basadas en IA aplicada. Fundó en 2005 uno de los primeros medios digitales sobre tecnología en Paraguay y ha trabajado con marcas como Coca-Cola en generación de contenido con IA. Creador del <a href="{{ '/' | relative_url }}">observatorio de IA en Paraguay</a>.</p>
+    <p class="author-bio-links">
+      <a href="{{ '/about/' | relative_url }}">Sobre el autor</a>
+       |
+      <a href="https://x.com/cesanz" target="_blank" rel="noopener noreferrer">Twitter</a>
+       |
+      <a href="https://www.linkedin.com/in/cesar-sanchez-melgarejo/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </p>
+  </div>
+</div>

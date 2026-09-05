@@ -1,0 +1,242 @@
+<div class="grafo">
+  <p class="grafo-eyebrow"><span class="grafo-dot-pulse"></span>Mapa de relaciones del Observatorio</p>
+
+  <p class="grafo-intro">Las 19 entidades del Observatorio, agrupadas por categoría. Cada línea une dos entidades que aparecen <strong>en el mismo artículo</strong> o comparten una <strong>ley o normativa</strong>; su grosor indica cuántas veces. Pasá el cursor (o tocá, en el celular) sobre un nodo para aislar sus vínculos; el clic abre su perfil. Los nodos <strong>atenuados</strong> todavía no comparten apariciones con otras entidades.</p>
+
+  <div class="grafo-legend">
+    <span class="grafo-legend-item"><i class="grafo-dot c-gobierno"></i>Gobierno</span>
+    <span class="grafo-legend-item"><i class="grafo-dot c-infraestructura"></i>Infraestructura</span>
+    <span class="grafo-legend-item"><i class="grafo-dot c-empresa"></i>Empresa</span>
+    <span class="grafo-legend-item"><i class="grafo-dot c-geopolitica"></i>Geopolítica</span>
+    <span class="grafo-legend-item"><i class="grafo-dot c-comunidad"></i>Comunidad</span>
+    <span class="grafo-legend-item"><i class="grafo-dot c-academia"></i>Academia</span>
+  </div>
+
+  <div class="grafo-stage">
+    <div class="grafo-canvas" id="grafo-canvas">
+      <svg id="grafo-svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet" role="group" aria-label="Grafo de relaciones entre las entidades del observatorio"></svg>
+      <div class="grafo-labels" id="grafo-labels"></div>
+    </div>
+    <a class="grafo-active is-empty" id="grafo-active" aria-live="polite"></a>
+    <noscript>
+      <p class="grafo-noscript">Este mapa interactivo requiere JavaScript. La lista completa de entidades está más abajo.</p>
+    </noscript>
+  </div>
+
+  <div class="grafo-list">
+    <h3 class="grafo-list-title">Entidades del observatorio</h3>
+    <ul class="grafo-entities">
+      {% for e in site.data.entities %}
+      <li class="grafo-entity">
+        {% case e.category %}
+          {% when 'gobierno' %}{% assign c = 'c-gobierno' %}
+          {% when 'infraestructura' %}{% assign c = 'c-infraestructura' %}
+          {% when 'empresa' %}{% assign c = 'c-empresa' %}
+          {% when 'geopolítica' %}{% assign c = 'c-geopolitica' %}
+          {% when 'comunidad' %}{% assign c = 'c-comunidad' %}
+          {% when 'academia' %}{% assign c = 'c-academia' %}
+          {% else %}{% assign c = 'c-gobierno' %}
+        {% endcase %}
+        <a href="/entidades/{{ e.slug }}/"><span class="grafo-dot {{ c }}"></span><strong>{{ e.name }}</strong> — {{ e.name_full }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<script>
+(function () {
+  var svg = document.getElementById('grafo-svg');
+  var labelsLayer = document.getElementById('grafo-labels');
+  var pill = document.getElementById('grafo-active');
+  var canvas = document.getElementById('grafo-canvas');
+  if (!svg || !labelsLayer || !pill || !canvas) return;
+
+  var NS = 'http://www.w3.org/2000/svg';
+  var W = 1200, H = 800, CX = 600, CY = 400, R_NODE = 250, R_LABEL = 320, SLOT = 20;
+  var CATEGORY_ORDER = ['gobierno', 'infraestructura', 'empresa', 'geopolítica', 'comunidad', 'academia'];
+  var CAT_CLASS = {
+    'gobierno': 'c-gobierno', 'infraestructura': 'c-infraestructura', 'empresa': 'c-empresa',
+    'geopolítica': 'c-geopolitica', 'comunidad': 'c-comunidad', 'academia': 'c-academia'
+  };
+  var isTouch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+
+  function el(tag, attrs) {
+    var n = document.createElementNS(NS, tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    return n;
+  }
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  fetch('/grafo.json')
+    .then(function (r) { return r.json(); })
+    .then(function (g) {
+      if (!g.nodes || !g.nodes.length) return;
+
+      // Deduplicate directed edges into unique pairs with a co-occurrence weight.
+      var pairMap = {};
+      g.edges.forEach(function (e) {
+        var a = e.source, b = e.target;
+        var k = a < b ? a + '|' + b : b + '|' + a;
+        pairMap[k] = (pairMap[k] || 0) + 1;
+      });
+      var links = Object.keys(pairMap).map(function (k) {
+        var p = k.split('|');
+        return { s: p[0], t: p[1], w: pairMap[k] };
+      });
+
+      var nodeBy = {};
+      var nodes = g.nodes.map(function (n) {
+        var o = { slug: n.slug, name: n.name, nameFull: n.name_full, cat: n.category, url: n.url, deg: 0 };
+        nodeBy[n.slug] = o;
+        return o;
+      });
+      links.forEach(function (l) {
+        if (nodeBy[l.s]) nodeBy[l.s].deg += 1;
+        if (nodeBy[l.t]) nodeBy[l.t].deg += 1;
+      });
+
+      // Order by category (legend order), then by degree desc within each sector.
+      var buckets = {};
+      nodes.forEach(function (n) { (buckets[n.cat] = buckets[n.cat] || []).push(n); });
+      CATEGORY_ORDER.forEach(function (c) {
+        if (buckets[c]) buckets[c].sort(function (a, b) { return b.deg - a.deg; });
+      });
+      var ordered = [];
+      CATEGORY_ORDER.forEach(function (c) { if (buckets[c]) ordered = ordered.concat(buckets[c]); });
+      nodes.forEach(function (n) { if (ordered.indexOf(n) < 0) ordered.push(n); });
+
+      // Adjacency for highlighting.
+      var neighbors = {};
+      ordered.forEach(function (n) { neighbors[n.slug] = {}; });
+      links.forEach(function (l) { neighbors[l.s][l.t] = l.w; neighbors[l.t][l.s] = l.w; });
+
+      // Deterministic radial positions + tidy-label placement.
+      ordered.forEach(function (n, i) {
+        var ang = -90 + i * SLOT;
+        var rad = ang * Math.PI / 180;
+        n.x = CX + R_NODE * Math.cos(rad);
+        n.y = CY + R_NODE * Math.sin(rad);
+        n.lx = CX + R_LABEL * Math.cos(rad);
+        n.ly = CY + R_LABEL * Math.sin(rad);
+        var c = Math.cos(rad);
+        if (Math.abs(c) < 0.40) n.pos = (Math.sin(rad) < 0) ? 'top' : 'bottom';
+        else n.pos = (c >= 0) ? 'right' : 'left';
+        n.r = Math.min(14, 7 + n.deg * 0.9);
+      });
+
+      // Faint guide ring marking the node orbit.
+      svg.appendChild(el('circle', { class: 'grafo-guide', cx: CX, cy: CY, r: R_NODE }));
+
+      // Edges.
+      var edgesG = el('g', {});
+      var edgeEls = [];
+      links.forEach(function (l) {
+        var a = nodeBy[l.s], b = nodeBy[l.t];
+        if (!a || !b) return;
+        var line = el('line', {
+          class: 'grafo-edge',
+          x1: a.x, y1: a.y, x2: b.x, y2: b.y,
+          'stroke-width': (0.8 + l.w * 0.7).toFixed(1)
+        });
+        edgesG.appendChild(line);
+        edgeEls.push({ el: line, s: l.s, t: l.t });
+      });
+      svg.appendChild(edgesG);
+
+      // Nodes (SVG dots) + labels (HTML buttons).
+      var nodesG = el('g', {});
+      var nodeEls = [];
+      ordered.forEach(function (n) {
+        var circle = el('circle', {
+          class: 'grafo-node-dot ' + (CAT_CLASS[n.cat] || 'c-gobierno'),
+          cx: n.x, cy: n.y, r: n.r
+        });
+        circle.setAttribute('data-slug', n.slug);
+        circle.setAttribute('aria-label', n.nameFull);
+        if (n.deg === 0) circle.classList.add('is-isolated');
+        var title = el('title', {});
+        title.textContent = n.nameFull;
+        circle.appendChild(title);
+        nodesG.appendChild(circle);
+
+        var label = document.createElement('button');
+        label.type = 'button';
+        label.className = 'grafo-label pos-' + n.pos;
+        label.style.left = (n.lx / W * 100) + '%';
+        label.style.top = (n.ly / H * 100) + '%';
+        label.textContent = n.name;
+        label.setAttribute('data-slug', n.slug);
+        labelsLayer.appendChild(label);
+
+        nodeEls.push({ slug: n.slug, circle: circle, label: label, url: n.url });
+      });
+      svg.appendChild(nodesG);
+
+      var active = null;
+
+      function setActive(slug) {
+        active = slug;
+        var nbrs = slug ? neighbors[slug] : null;
+        nodeEls.forEach(function (o) {
+          var isA = o.slug === slug;
+          var isN = !!nbrs && o.slug !== slug && !!nbrs[o.slug];
+          var isDim = !!slug && !isA && !isN;
+          o.circle.classList.toggle('is-active', isA);
+          o.circle.classList.toggle('is-neighbor', isN);
+          o.circle.classList.toggle('is-dim', isDim);
+          o.label.classList.toggle('is-active', isA);
+          o.label.classList.toggle('is-dim', isDim);
+        });
+        edgeEls.forEach(function (e) {
+          var on = !!slug && (e.s === slug || e.t === slug);
+          e.el.classList.toggle('is-active', on);
+          e.el.classList.toggle('is-dim', !!slug && !on);
+        });
+        pill.classList.toggle('is-empty', !slug);
+        if (slug) {
+          var n = nodeBy[slug];
+          pill.setAttribute('href', n.url);
+          pill.innerHTML = '<strong>' + escapeHtml(n.name) + '</strong> — ' + escapeHtml(n.nameFull);
+        } else {
+          pill.removeAttribute('href');
+          pill.textContent = isTouch
+            ? 'Tocá un nodo para ver sus vínculos'
+            : 'Pasá el cursor sobre un nodo';
+        }
+      }
+
+      function go(o) { if (o.url) window.location.href = o.url; }
+
+      nodeEls.forEach(function (o) {
+        function over() { setActive(o.slug); }
+        function out() { if (!isTouch) setActive(null); }
+        function click() {
+          if (isTouch) { if (active === o.slug) go(o); else setActive(o.slug); }
+          else go(o);
+        }
+        o.circle.addEventListener('mouseenter', over);
+        o.circle.addEventListener('mouseleave', out);
+        o.circle.addEventListener('click', click);
+        o.label.addEventListener('mouseenter', over);
+        o.label.addEventListener('mouseleave', out);
+        o.label.addEventListener('focus', over);
+        o.label.addEventListener('blur', function () { setActive(null); });
+        o.label.addEventListener('click', click);
+      });
+
+      // Tap empty space to deselect on touch.
+      canvas.addEventListener('click', function (ev) {
+        var t = ev.target;
+        if (t === svg || t === labelsLayer || (t.classList && t.classList.contains('grafo-guide'))) setActive(null);
+      });
+
+      setActive(null);
+    })
+    .catch(function () {});
+})();
+</script>

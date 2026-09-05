@@ -1,0 +1,22 @@
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+
+docs/
+muchotexto_contexto_proyecto.md
+squirrel.toml
+research_*/
+inspiracion_futbol_mundial2026.md
+Copys/
+research_seo_2026/
+analisis_junio_2026.md
+estrategia-seo-unificada-muchotexto.md
+guest_post_muchotexto.md
+MuchoTexto Data.md
+__pycache__/
+linkedin_post_muchotexto.md
+borrador_media_kit.md
+scripts/.indexnow_cache.json
+_planning/

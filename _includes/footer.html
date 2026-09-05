@@ -1,0 +1,35 @@
+<footer class="footer">
+  <div class="footer-column">
+    <p>
+      <small>
+        Creado por <a href="/about/" rel="noopener noreferrer">{{ site.author.name }}</a>.
+      </small>
+    </p>
+    <p>
+      <small>
+        <a href="{{ '/como-trabajamos/' | relative_url }}">Cómo trabajamos</a> &middot;
+        <a href="{{ '/privacidad/' | relative_url }}">Privacidad</a> &middot;
+        <a href="{{ '/terminos/' | relative_url }}">Términos</a>
+      </small>
+    </p>
+    <p>
+      <small>
+        Powered by <a href="https://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jekyll</a> & <a href="https://github.com/zivhub/monophase" target="_blank" rel="noopener noreferrer">Monophase</a>
+      </small>
+    </p>
+  </div>
+  {% if site.data.social %}
+    <div class="footer-column">
+      <ul class="social-icons">
+        {% for social in site.data.social %}
+          <li class="social-icon-item">
+            <a class="social-icon" href="{{ social.url }}" target="_blank" rel="noopener noreferrer" title="{{ social.title }}">
+              {% assign icon_name = social.icon | replace: 'fab fa-', '' | default: 'link' %}
+              {% include icon.html name=icon_name %}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+</footer>

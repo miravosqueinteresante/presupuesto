@@ -1,0 +1,122 @@
+# Radar legislativo — estado de leyes, decretos y proyectos.
+# Fuente: mapa regulatorio (/regulacion/) y AGENTS.md (claims verificados).
+# Los textos usan acentos y caracteres del español correctamente.
+# Estados válidos: vigente | proyecto | en-tramite | pendiente
+
+- nombre: "Ley 7593/2025 — Protección de datos personales"
+  estado: vigente
+  nota: "Primera ley integral de protección de datos. Sancionada el 5 de noviembre de 2025, promulgada el 27 de noviembre. En vacatio legis hasta noviembre de 2027."
+  articulo: /articulos/2026/07/07/ley-proteccion-datos-paraguay-ia/
+
+- nombre: "Ley 6822/2022 — Servicios de confianza"
+  estado: vigente
+  nota: "Base legal de la identidad digital, la firma electrónica y las notificaciones digitales."
+  articulo: /articulos/2026/07/16/gobierno-digital-paraguay/
+
+- nombre: "Ley 4868/2013 — Comercio electrónico"
+  estado: vigente
+  nota: "Precursora del marco digital, anterior a la ley de datos."
+  articulo: /articulos/2026/07/07/ley-proteccion-datos-paraguay-ia/
+
+- nombre: "Ley 7503/2025 — Sistema Nacional de Pagos"
+  estado: vigente
+  nota: "Extiende la supervisión del BCP a las fintech. Interoperabilidad obligatoria entre billeteras y bancos."
+  articulo: /articulos/2026/07/10/fintech-paraguay-ecosistema/
+
+- nombre: "Ley 7572/2025 — Mercado de Valores"
+  estado: vigente
+  nota: "Su artículo 73 reconoce instrumentos financieros emitidos en blockchain: el marco para la tokenización de activos."
+  articulo: /articulos/2026/07/10/fintech-paraguay-ecosistema/
+
+- nombre: "Ley 7599/2025 y Decreto 6034/2026 — Apertura del sector eléctrico"
+  estado: vigente
+  nota: "Abren la generación privada de energía renovable. Decreto 6034 firmado el 19 de mayo de 2026. Es ley presupuestaria anual, no permanente."
+  articulo: /articulos/2026/05/27/apertura-sector-electrico-privado-paraguay/
+
+- nombre: "Política Energética Nacional al 2050 (Decreto 2553/2024)"
+  estado: vigente
+  nota: "Aprobada en septiembre de 2024. 95 objetivos y 385 metas. Deroga el Decreto 6.092/2016."
+  articulo: /articulos/2026/08/12/mesa-energetica-pen-2050-paraguay/
+
+- nombre: "Estrategia Nacional de Ciberseguridad 2025-2028 (Decreto 3900)"
+  estado: vigente
+  nota: "Primera estrategia nacional de ciberseguridad, aprobada en mayo de 2025 con apoyo de la OEA."
+  articulo: /articulos/2026/07/17/ciberseguridad-paraguay/
+
+- nombre: "Acordada 1107/2016 — Expediente Judicial Electrónico"
+  estado: vigente
+  nota: "Plataforma de tramitación digital de causas. Cubre las 18 circunscripciones judiciales."
+  articulo: /articulos/2026/07/21/ia-justicia-paraguay/
+
+- nombre: "Ley 7021/2022 — Compras públicas"
+  estado: vigente
+  nota: "Moderniza las contrataciones públicas. Paraguay digitalizó sus compras en la DNCP pero no usa IA para auditar licitaciones."
+  articulo: /articulos/2026/07/17/ia-corrupcion-paraguay/
+
+- nombre: "Ley 3001/2006 — Evaluación de impacto ambiental"
+  estado: vigente
+  nota: "Potencialmente aplicable a data centers, pero nunca invocada para el sector."
+  articulo: /articulos/2026/08/04/impacto-local-data-center-paraguay/
+
+- nombre: "Tarifa de Itaipú 2024-2026 (acuerdo tarifario)"
+  estado: vigente
+  nota: "Acuerdo Peña-Lula: USD 19,28/kW-mes. Vence el 1 de enero de 2027."
+  articulo: /articulos/2026/07/17/itaipu-2027-energia-paraguay/
+
+- nombre: "Ministerio de Energía, Minería e Hidrocarburos"
+  estado: proyecto
+  nota: "Proyecto de ley presentado por el Ejecutivo el 13 de agosto de 2026. Absorbe al VMME y a la Dirección de Combustibles."
+  articulo: /articulos/2026/08/19/ministerio-energia-mineria-hidrocarburos/
+
+- nombre: "Ente Regulador de Energía"
+  estado: proyecto
+  nota: "Proyecto de ley presentado el 13 de agosto de 2026. Directorio por concurso público y revisión tarifaria periódica."
+  articulo: /articulos/2026/08/19/ente-regulador-energia/
+
+- nombre: "Anexo C del Tratado de Itaipú"
+  estado: en-tramite
+  nota: "Negociaciones suspendidas entre abril y noviembre de 2025 por el escándalo ABIN, reanudadas en noviembre. Sin nuevo acuerdo a agosto de 2026. Vence el 1 de enero de 2027."
+  articulo: /articulos/2026/07/17/itaipu-2027-energia-paraguay/
+
+- nombre: "Reglamentación de la Ley 7593/2025"
+  estado: en-tramite
+  nota: "Debe estar lista antes de noviembre de 2027. La autoridad de aplicación (Dirección General del MITIC) aún no fue creada."
+  articulo: /articulos/2026/07/07/ley-proteccion-datos-paraguay-ia/
+
+- nombre: "Ley de historia clínica electrónica"
+  estado: en-tramite
+  nota: "Media sanción en Diputados (abril de 2025). Bajo revisión del Senado."
+
+- nombre: "Estrategia Nacional de IA"
+  estado: en-tramite
+  nota: "El MITIC realizó consulta pública en 2024. La UNESCO publicó el RAM Report en diciembre de 2025. Sin documento oficial publicado."
+
+- nombre: "Ley de IA, deepfakes y contenido sintético"
+  estado: en-tramite
+  nota: "No existe norma vigente que regule IA, deepfakes, agentes autónomos ni contenido sintético. Al menos cuatro proyectos en trámite, ninguno sancionado: S-2502197 (ley general de IA, Senado, may-2025), D-2584139 (promueve uso de IA, Diputados, abr-2025), D-2585277 (tipificación de deepfakes, Diputados, jun-2025) e iniciativa del Senado de mar-2026 contra imitaciones digitales no consentidas."
+  articulo: /articulos/2026/09/03/contenido-basura-agentes-ia/
+
+- nombre: "Ley integral de ciberseguridad"
+  estado: pendiente
+  nota: "No existe. La Estrategia 2025-2028 es el documento más cercano a una política de Estado."
+  articulo: /articulos/2026/07/17/ciberseguridad-paraguay/
+
+- nombre: "Regulación específica para data centers"
+  estado: pendiente
+  nota: "Paraguay no tiene cuotas de contratación local ni obligaciones de beneficio comunitario para data centers."
+  articulo: /articulos/2026/07/25/cadena-valor-data-center/
+
+- nombre: "Ley 7547/2025 — Régimen de Maquila"
+  estado: vigente
+  nota: "Moderniza la Ley 1064/97. Tributo único del 1% sobre valor agregado nacional o factura de exportación (el mayor), beneficios hasta 20 años, maquila de servicios, modalidades shelter y capacidad ociosa. Promulgada y publicada el 08-09-2025."
+  articulo: /articulos/2026/08/28/adata-minga-guazu-memorias-semiconductores/
+
+- nombre: "Ley 7546/2025 — Producción y ensamblaje electrónico"
+  estado: vigente
+  nota: "Política Nacional para la Producción y el Ensamblaje de Equipos Eléctricos, Electrónicos, Electromecánicos y Digitales. IVA sobre base reducida (15% materiales, 45% producto), mínimo 20% de valor agregado nacional, beneficios 20 años. Publicada el 08-09-2025. Distinta de la maquila: permite venta en mercado interno."
+  articulo: /articulos/2026/08/28/adata-minga-guazu-memorias-semiconductores/
+
+- nombre: "Ley 7548/2025 — Incentivos fiscales para inversiones"
+  estado: vigente
+  nota: "Actualiza el Decreto-Ley 27 y la Ley 60/90. Exención de arancel aduanero a bienes de capital, exención de IVA, INR e IDU (piso de US$13M solo para INR/IDU). Reglamentada por Decreto 5432 (30-ene-2026). Publicada el 08-09-2025."
+  articulo: /articulos/2026/08/28/adata-minga-guazu-memorias-semiconductores/

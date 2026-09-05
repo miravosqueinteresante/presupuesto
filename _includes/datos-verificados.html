@@ -1,0 +1,30 @@
+{% comment %}
+  Bloque "Datos verificados" — enlace a la capa de datos MuchoTexto Data.
+  Uso: {% include datos-verificados.html entidad="ande" %}
+  entidad: ande | itaipu | yacyreta | general (default)
+  Riesgo cero: solo HTML, sin JS. Reversible con un commit.
+{% endcomment %}
+{% assign d_page = "index.html" %}
+{% assign d_titulo = "MuchoTexto Data" %}
+{% assign d_desc = "Infraestructura de datos verificables sobre Paraguay" %}
+{% if include.entidad == "ande" %}
+  {% assign d_page = "energia.html" %}
+  {% assign d_titulo = "Energía — ANDE" %}
+  {% assign d_desc = "75 indicadores del sistema eléctrico paraguayo: consumo, demanda, pérdidas, clientes y tarifas" %}
+{% elsif include.entidad == "itaipu" %}
+  {% assign d_page = "itaipu.html" %}
+  {% assign d_titulo = "Itaipú Binacional" %}
+  {% assign d_desc = "135 indicadores (2000–2026): generación por sector 50/60 Hz y suministro a Paraguay y Brasil" %}
+{% elsif include.entidad == "yacyreta" %}
+  {% assign d_page = "yacyreta.html" %}
+  {% assign d_titulo = "Yacyretá" %}
+  {% assign d_desc = "Generación binacional Paraguay-Argentina: mensual EBY y agregada anual" %}
+{% endif %}
+<div class="datos-verificados">
+  <span class="datos-verificados-tag">Datos verificados</span>
+  <p class="datos-verificados-text">
+    Estas cifras se respaldan con evidencia oficial en
+    <a href="https://datospublicos.muchotexto.net/{{ d_page }}" rel="noopener noreferrer" target="_blank"><strong>{{ d_titulo }}</strong></a>
+    — {{ d_desc }}. Cada indicador conserva su fuente, método de extracción y trazabilidad.
+  </p>
+</div>

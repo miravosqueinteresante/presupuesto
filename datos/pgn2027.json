@@ -1,0 +1,428 @@
+{
+  "meta": {
+    "nombre": "Presupuesto General de la Nación 2027 — Paraguay (proyecto)",
+    "generado": "2026-09-04",
+    "org": "Ministerio de Economía y Finanzas del Paraguay",
+    "licencia": "Datos públicos de fuente oficial (MEF). Uso libre con atribución y cita de fuente+página.",
+    "nota": "Monto total de la Ley (D01 p.1) verificable; detalles por programa de Salud de D20 (incluye partidas no asignables)."
+  },
+  "macro": [
+    [
+      "Total PGN 2027",
+      "166,322,078,980,116",
+      "Gs.",
+      "D01, pág. 1"
+    ],
+    [
+      "Total PGN 2026 (Ley 7609/2025)",
+      "149,613,679,046,612",
+      "Gs.",
+      "D18, pág. 1"
+    ],
+    [
+      "Variación nominal",
+      "+11,2%",
+      "%",
+      "derivado D01/D18, pág. 1"
+    ],
+    [
+      "PGN como % del PIB (proy.)",
+      "~38,4%",
+      "%",
+      "derivado D01/D02, pág. 6"
+    ],
+    [
+      "PIB real 2027 (proy.)",
+      "+4,2%",
+      "%",
+      "D02, pág. 6"
+    ],
+    [
+      "Inflación 2027 (proy.)",
+      "3,5%",
+      "%",
+      "D02, pág. 6"
+    ],
+    [
+      "Déficit tope propuesto 2027",
+      "3,9% del PIB",
+      "% PIB",
+      "D01, pág. 36"
+    ],
+    [
+      "Deuda pública (jun-2026)",
+      "US$ 21.947 M (34,4% del PIB)",
+      "US$",
+      "D02, pág. 5"
+    ],
+    [
+      "Tipo de cambio proyectado 2027",
+      "Gs. 6.458/US$",
+      "Gs/US$",
+      "D02, pág. 6 (OCR)"
+    ]
+  ],
+  "economia": [
+    {
+      "categoria": "Gastos corrientes",
+      "gs": 101027598824879,
+      "pct": 60.7,
+      "fuente": "D01 (p.7-8)"
+    },
+    {
+      "categoria": "Gastos de capital",
+      "gs": 57514436088858,
+      "pct": 34.6,
+      "fuente": "D01 (p.7-8)"
+    },
+    {
+      "categoria": "Aplicaciones financieras (deuda)",
+      "gs": 7780044066379,
+      "pct": 4.7,
+      "fuente": "D01 (p.7-8)"
+    }
+  ],
+  "instituciones_2027": [
+    {
+      "nombre": "Ministerio de Economía y Finanzas",
+      "gs_2027": 24966321986841,
+      "pct": 15.01,
+      "fuente": "D01",
+      "pagina": "7"
+    },
+    {
+      "nombre": "Ministerio de Salud Pública y Bienestar Social",
+      "gs_2027": 18168392998474,
+      "pct": 10.92,
+      "fuente": "D01",
+      "pagina": "8"
+    },
+    {
+      "nombre": "Ministerio de Educación y Ciencias",
+      "gs_2027": 10450207042878,
+      "pct": 6.28,
+      "fuente": "D01",
+      "pagina": "8"
+    },
+    {
+      "nombre": "Ministerio de Obras Públicas y Comunicaciones",
+      "gs_2027": 9202327126231,
+      "pct": 5.53,
+      "fuente": "D01",
+      "pagina": "8"
+    },
+    {
+      "nombre": "Ministerio de Desarrollo Social",
+      "gs_2027": 5623748612337,
+      "pct": 3.38,
+      "fuente": "D01",
+      "pagina": "8"
+    },
+    {
+      "nombre": "Ministerio del Interior",
+      "gs_2027": 5504384635596,
+      "pct": 3.31,
+      "fuente": "D01",
+      "pagina": "7"
+    },
+    {
+      "nombre": "Poder Judicial y organismos auxiliares",
+      "gs_2027": 4252841465355,
+      "pct": 2.56,
+      "fuente": "D01",
+      "pagina": "8"
+    },
+    {
+      "nombre": "Ministerio de Defensa Nacional",
+      "gs_2027": 3148989697897,
+      "pct": 1.89,
+      "fuente": "D01",
+      "pagina": "7"
+    },
+    {
+      "nombre": "Gobiernos Departamentales",
+      "gs_2027": 2818771895861,
+      "pct": 1.69,
+      "fuente": "D01",
+      "pagina": "8"
+    },
+    {
+      "nombre": "Presidencia de la República",
+      "gs_2027": 1113526766687,
+      "pct": 0.67,
+      "fuente": "D01",
+      "pagina": "7"
+    }
+  ],
+  "areas": [
+    {
+      "area": "Salud",
+      "instituciones": "MSPyBS",
+      "gs": 18168392998474,
+      "pct": 10.9,
+      "fuente": "D01",
+      "pagina": "8"
+    },
+    {
+      "area": "Educación",
+      "instituciones": "MEC",
+      "gs": 10450207042878,
+      "pct": 6.3,
+      "fuente": "D01",
+      "pagina": "8"
+    },
+    {
+      "area": "Infraestructura",
+      "instituciones": "MOPC",
+      "gs": 9202327126231,
+      "pct": 5.5,
+      "fuente": "D01",
+      "pagina": "8"
+    },
+    {
+      "area": "Seguridad",
+      "instituciones": "Interior + Defensa Nacional",
+      "gs": 8653374333493,
+      "pct": 5.2,
+      "fuente": "D01",
+      "pagina": "7"
+    },
+    {
+      "area": "Protección social",
+      "instituciones": "Desarrollo Social + MINNA",
+      "gs": 5781949321304,
+      "pct": 3.5,
+      "fuente": "D01",
+      "pagina": "8"
+    }
+  ],
+  "variaciones": [
+    {
+      "nombre": "Ministerio de Economía y Finanzas",
+      "gs_2026": 25177656655343,
+      "gs_2027": 24966321986841,
+      "delta_gs": -211334668502,
+      "delta_pct": -0.8,
+      "fuente": "Ley 7.609/2025 y Ley PGN 2027"
+    },
+    {
+      "nombre": "Ministerio de Salud Pública y Bienestar Social",
+      "gs_2026": 10264915884361,
+      "gs_2027": 18168392998474,
+      "delta_gs": 7903477114113,
+      "delta_pct": 77.0,
+      "fuente": "Ley 7.609/2025 y Ley PGN 2027"
+    },
+    {
+      "nombre": "Ministerio de Educación y Ciencias",
+      "gs_2026": 10393441969514,
+      "gs_2027": 10450207042878,
+      "delta_gs": 56765073364,
+      "delta_pct": 0.5,
+      "fuente": "Ley 7.609/2025 y Ley PGN 2027"
+    },
+    {
+      "nombre": "Ministerio de Obras Públicas y Comunicaciones",
+      "gs_2026": 6855588246134,
+      "gs_2027": 9202327126231,
+      "delta_gs": 2346738880097,
+      "delta_pct": 34.2,
+      "fuente": "Ley 7.609/2025 y Ley PGN 2027"
+    },
+    {
+      "nombre": "Ministerio de Desarrollo Social",
+      "gs_2026": 4959138624193,
+      "gs_2027": 5623748612337,
+      "delta_gs": 664609988144,
+      "delta_pct": 13.4,
+      "fuente": "Ley 7.609/2025 y Ley PGN 2027"
+    },
+    {
+      "nombre": "Ministerio del Interior",
+      "gs_2026": 4640578367695,
+      "gs_2027": 5504384635596,
+      "delta_gs": 863806267901,
+      "delta_pct": 18.6,
+      "fuente": "Ley 7.609/2025 y Ley PGN 2027"
+    },
+    {
+      "nombre": "Poder Judicial y organismos auxiliares",
+      "gs_2026": 3985023518134,
+      "gs_2027": 4252841465355,
+      "delta_gs": 267817947221,
+      "delta_pct": 6.7,
+      "fuente": "Ley 7.609/2025 y Ley PGN 2027"
+    },
+    {
+      "nombre": "Ministerio de Defensa Nacional",
+      "gs_2026": 2760773668569,
+      "gs_2027": 3148989697897,
+      "delta_gs": 388216029328,
+      "delta_pct": 14.1,
+      "fuente": "Ley 7.609/2025 y Ley PGN 2027"
+    },
+    {
+      "nombre": "Gobiernos Departamentales",
+      "gs_2026": 2625941087663,
+      "gs_2027": 2818771895861,
+      "delta_gs": 192830808198,
+      "delta_pct": 7.3,
+      "fuente": "Ley 7.609/2025 y Ley PGN 2027"
+    },
+    {
+      "nombre": "Presidencia de la República",
+      "gs_2026": 1077761933621,
+      "gs_2027": 1113526766687,
+      "delta_gs": 35764833066,
+      "delta_pct": 3.3,
+      "fuente": "Ley 7.609/2025 y Ley PGN 2027"
+    }
+  ],
+  "estructura": {
+    "admin_central": 87905852469505,
+    "entes_descentralizados": 78416226510611,
+    "pct_ac": 52.9,
+    "pct_ed": 47.1
+  },
+  "salud": {
+    "total_gs": 18175144157820,
+    "total_ley_gs": 18168392998474,
+    "gs_2026": 10264915884361,
+    "serie": {
+      "anios": [
+        "2025",
+        "2026",
+        "2027"
+      ],
+      "billones": [
+        9.7,
+        10.26,
+        18.17
+      ],
+      "nota": "Serie limitada a los años con dato verificado (2018–2024 quedan pendientes de OCR de las Leyes escaneadas — ver informe). 2027 = proyecto, aún no sancionado."
+    },
+    "nota": "El total de la Programación de Gastos (D20) incluye Gs. 6.751 millones de 'partidas no asignables a programas'; la Ley (D01) reporta Gs. 18.168.392.998.474 sin ellas. Crecimiento 2027 vs 2026: +77,0% (+Gs. 7.903,5 millones).",
+    "diccionario": {
+      "Programa Central (gestión y administración)": "El andamiaje del ministerio: dirección, gestión administrativa y funcionamiento institucional.",
+      "Acceso a la Atención Primaria de la Salud (APS/USF)": "La salud de puerta de entrada: unidades de salud de la familia (USF), centros de salud y prevención en la comunidad.",
+      "Servicios Hospitalarios (reducción morbimortalidad)": "Hospitales públicos: internación, urgencias, cirugías y atención de complejidad.",
+      "Servicios de Apoyo y Diagnóstico": "Lo que ayuda a diagnosticar y tratar: laboratorios, imágenes (radiología, ecografías) y servicios de apoyo clínico.",
+      "Atención a Enfermedades Especiales": "Atención a pacientes con enfermedades especiales, incluidas las de alto costo.",
+      "Seguridad Alimentaria Nutricional": "Combate a la desnutrición: programas de nutrición y seguridad alimentaria.",
+      "Bienestar Social de personas en riesgo": "Apoyo a personas en situación de riesgo y vulnerabilidad social.",
+      "Acceso a Agua Potable y Saneamiento": "Mejora del acceso a agua potable y a servicios de saneamiento.",
+      "Partidas no asignables a programas": "Montos que no se reparten entre programas (ajustes del presupuesto); la Ley los contabiliza aparte."
+    },
+    "programas": [
+      {
+        "codigo": "001",
+        "programa": "Programa Central (gestión y administración)",
+        "monto_gs": 2962614270292,
+        "pct": 16.3,
+        "fuente": "D20",
+        "pagina": "1/16/53/58/62/63/65/69"
+      },
+      {
+        "codigo": "001",
+        "programa": "Acceso a la Atención Primaria de la Salud (APS/USF)",
+        "monto_gs": 434323559167,
+        "pct": 2.39,
+        "fuente": "D20",
+        "pagina": "1/16/53/58/62/63/65/69"
+      },
+      {
+        "codigo": "002",
+        "programa": "Servicios Hospitalarios (reducción morbimortalidad)",
+        "monto_gs": 5066104645214,
+        "pct": 27.87,
+        "fuente": "D20",
+        "pagina": "1/16/53/58/62/63/65/69"
+      },
+      {
+        "codigo": "003",
+        "programa": "Servicios de Apoyo y Diagnóstico",
+        "monto_gs": 9301248614450,
+        "pct": 51.18,
+        "fuente": "D20",
+        "pagina": "1/16/53/58/62/63/65/69"
+      },
+      {
+        "codigo": "004",
+        "programa": "Atención a Enfermedades Especiales",
+        "monto_gs": 59045954398,
+        "pct": 0.32,
+        "fuente": "D20",
+        "pagina": "1/16/53/58/62/63/65/69"
+      },
+      {
+        "codigo": "005",
+        "programa": "Seguridad Alimentaria Nutricional",
+        "monto_gs": 176778234291,
+        "pct": 0.97,
+        "fuente": "D20",
+        "pagina": "1/16/53/58/62/63/65/69"
+      },
+      {
+        "codigo": "006",
+        "programa": "Bienestar Social de personas en riesgo",
+        "monto_gs": 36054733461,
+        "pct": 0.2,
+        "fuente": "D20",
+        "pagina": "1/16/53/58/62/63/65/69"
+      },
+      {
+        "codigo": "007",
+        "programa": "Acceso a Agua Potable y Saneamiento",
+        "monto_gs": 132222987201,
+        "pct": 0.73,
+        "fuente": "D20",
+        "pagina": "1/16/53/58/62/63/65/69"
+      },
+      {
+        "codigo": "---",
+        "programa": "Partidas no asignables a programas",
+        "monto_gs": 6751159346,
+        "pct": 0.04,
+        "fuente": "D20",
+        "pagina": "1/16/53/58/62/63/65/69"
+      }
+    ]
+  },
+  "fuentes": [
+    {
+      "id": "D01",
+      "nombre": "Proyecto de Ley PGN 2027",
+      "url": "https://www.mef.gov.py/sites/default/files/2026-09/Proyecto_PGN_2027.pdf"
+    },
+    {
+      "id": "D02",
+      "nombre": "Mensaje del Proyecto PGN 2027",
+      "url": "https://www.mef.gov.py/sites/default/files/2026-09/MENSAJE.pdf"
+    },
+    {
+      "id": "D03",
+      "nombre": "Clasificador Presupuestario PGN 2027",
+      "url": "https://www.mef.gov.py/sites/default/files/2026-09/CLASIFICADOR%20PRESUPUESTARIO%20PGN%202027.pdf"
+    },
+    {
+      "id": "D17",
+      "nombre": "Proyecto de Ley PGN 2026",
+      "url": "https://www.mef.gov.py/sites/default/files/2025-08/PROYECTO%20DE%20LEY%20PGN%202026-2.pdf"
+    },
+    {
+      "id": "D18",
+      "nombre": "Ley N° 7609/2025 (PGN 2026 sancionado)",
+      "url": "https://www.mef.gov.py/sites/default/files/2026-01/LEY_7609_PGN_2026_OCR.pdf"
+    },
+    {
+      "id": "D19",
+      "nombre": "PPR del MSPyBS (12.8)",
+      "url": "https://www.mef.gov.py/sites/default/files/2026-09/12.8%20Ministerio%20de%20Salud%20P%C3%BAblica%20y%20Bienestar%20Social.pdf"
+    },
+    {
+      "id": "D20",
+      "nombre": "Programación de Gastos del MSPyBS (12.8)",
+      "url": "https://www.mef.gov.py/sites/default/files/2026-09/12.8%20Ministerio%20de%20Salud%20P%C3%BAblica%20y%20Bienestar%20Social_3.pdf"
+    }
+  ]
+}

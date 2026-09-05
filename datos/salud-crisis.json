@@ -1,0 +1,145 @@
+{
+  "deuda": {
+    "periodos": [
+      "2022",
+      "ago-2025",
+      "ene-2026",
+      "abr-2026",
+      "ago-2026",
+      "sep-2026"
+    ],
+    "usd_m": [
+      150,
+      663,
+      814,
+      1220,
+      1000,
+      600
+    ],
+    "nota": "150M (2022); MSPBS 340M + IPS 323M (ago-2025) ≈663; 814M 'validada por MSPBS' (ene-26); rango FMI/MEF abr-26 ≈1.220 total (~1.000 farma); ~1.000 (ago-26, total Estado, CRIPFA); saldo ~600 (sep-26, tras cesión USD 320M). Varias cifras son estimaciones (MEF, FMI y cámaras del sector)."
+  },
+  "oop": {
+    "py": 36.3,
+    "lac": 29.7,
+    "oecd": 19.0,
+    "fuente": "Banco Mundial/OCDE (2023)"
+  },
+  "pib": {
+    "py": 8.36,
+    "lac": 7.94,
+    "oecd": 9.2,
+    "fuente": "Banco Mundial/OCDE (2022-2023)"
+  },
+  "salario": {
+    "infl_acum": 105,
+    "poder_compra": 49,
+    "base_m": 5,
+    "reclamo_m": 8,
+    "fuente": "Ley 7.137/2023 · Sinamed · BCP (serie)"
+  },
+  "cards": [
+    [
+      "Deuda con farmacéuticas (2026)",
+      "≈ USD 1.000-1.220 M",
+      "FMI, Artículo IV (2026)"
+    ],
+    [
+      "Ítems en stock crítico",
+      "72,6% doc. interno (1.453/2.001) · oficial 15,4%",
+      "Documento interno del MSPBS"
+    ],
+    [
+      "Amparos judiciales",
+      "120 en 15 días (ene-2026), ~100% oncológicos",
+      "Defensor del Pueblo (ene-2026)"
+    ],
+    [
+      "Gasto de bolsillo",
+      "36,3% (2023) ≈ 2× promedio OCDE",
+      "Banco Mundial (2023)"
+    ],
+    [
+      "Ejecución presupuestaria (jul-2025)",
+      "Gs. 4.824 mil millones (47,9% del año)",
+      "MEF/DGP (jul-2025)"
+    ],
+    [
+      "Abastecimiento territorial (2026)",
+      "Alto Paraguay Gs. 467,2 M · Pte. Hayes Gs. 697,3 M",
+      "MSPBS (2026)"
+    ]
+  ],
+  "timeline": [
+    [
+      "24-28 ago 2026",
+      "Huelga nacional de médicos (Sinamed) sin acuerdo (contexto)"
+    ],
+    [
+      "31 ago 2026",
+      "Renuncias masivas; afectación en Acosta Ñu, Trauma e Itauguá (contexto)"
+    ],
+    [
+      "01 sep 2026",
+      "PGN 2027: +77% en Ejecutivo→Salud; USD 760M a insumos; sin reajuste salarial general (MEF)"
+    ],
+    [
+      "sep 2026",
+      "Concurso de desprecarización: 1.644 médicos elegibles (MSPBS)"
+    ],
+    [
+      "sep 2026",
+      "Cesión de deuda por USD 320M; saldo ≈600M (MEF)"
+    ]
+  ],
+  "nota": "Todas las cifras provienen de afirmaciones verificadas del Registro de Evidencia del proyecto (122 de 132 verificadas; cierre 2026-09-04). Enlace al informe completo en la pestaña «Informe técnico».",
+  "glosario": [
+    [
+      "OCDE",
+      "Un club de 38 países ricos (Estados Unidos, España, Chile…) con el que nos comparamos para saber si Paraguay está bien o mal."
+    ],
+    [
+      "Gasto de bolsillo (OOP)",
+      "La plata que paga la persona en la farmacia o clínica, cuando el Estado o el seguro no cubren."
+    ],
+    [
+      "PIB",
+      "El valor de todo lo que produce el país en un año."
+    ],
+    [
+      "FMI / Fondo Monetario Internacional",
+      "Organismo internacional que revisa una vez al año las cuentas públicas del país."
+    ],
+    [
+      "Amparo",
+      "Un juicio rápido que pide un paciente para que el Estado le dé sí o sí un medicamento."
+    ],
+    [
+      "Vínculo laboral de 12 horas",
+      "El formato de contrato de los médicos del sistema público: 12 horas semanales por un sueldo."
+    ],
+    [
+      "Billones de guaraníes",
+      "Gs. 1 billón = un millón de millones: mucho más de lo que gana una familia en toda su vida."
+    ],
+    [
+      "Stock cero / stock crítico",
+      "Medicamentos agotados o a punto de agotarse en el depósito."
+    ],
+    [
+      "Desprecarización",
+      "Pasar a un contratado (temporal) a funcionario de planta, con estabilidad laboral."
+    ],
+    [
+      "Cesión de deuda (factoraje)",
+      "El Estado cede a una financiera la deuda que tiene con los laboratorios para que estos cobren antes."
+    ],
+    [
+      "UHC / índice 3.8.1",
+      "Índice de la ONU que mide cuántos de los servicios esenciales de salud llegan a la gente (escala de 0 a 100)."
+    ],
+    [
+      "PPP (paridad de poder de compra)",
+      "Forma de comparar precios entre países ajustando por cuánto cuesta vivir en cada uno."
+    ]
+  ]
+}

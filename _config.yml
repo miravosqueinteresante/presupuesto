@@ -1,0 +1,39 @@
+# Configuración del sitio presupuesto.muchotexto.net
+# Jekyll + tema Monophase (vendoreado) — mismo patrón que muchotexto.net
+
+title: "Presupuesto PGN 2027 — Explorador"
+description: "El presupuesto general de la nación de Paraguay 2027 explicado en simple: en qué se gasta tu plata, qué instituciones la administran y la crisis de salud con datos verificados."
+baseurl: "" # raíz del subdominio
+url: "https://presupuesto.muchotexto.net"
+github_username: miravosqueinteresante
+
+# Build settings
+# Theme files are local (copied from monophase)
+future: true
+permalink: pretty
+sass:
+  style: compressed
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+include:
+  - CNAME
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      lang: es
+
+# Monophase theme settings
+tagline: "En qué se gasta TU PLATA — explicado de forma simple"
+lang: es
+author:
+  name: MuchoTexto
+  url: https://muchotexto.net
+social:
+  name: MuchoTexto
+  links:
+    - "https://x.com/cesanz"

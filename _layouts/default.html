@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+  {% include head.html %}
+  <body>
+    <div class="container">
+
+      {% if page.layout == 'post' %}
+        <div id="reading-progress"></div>
+      {% endif %}
+
+      {% include header.html %}
+
+      <main>
+        {{ content }}
+      </main>
+
+      {% include footer.html %}
+    </div>
+
+    {% if page.math %}
+      {% include mathjax.html %}
+    {% endif %}
+
+    {% include cookie-consent.html %}
+    {% if page.layout == 'post' %}
+      <script>
+        var bar = document.getElementById('reading-progress');
+        window.addEventListener('scroll', function() {
+          var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+          var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          bar.style.width = (winScroll / height) * 100 + '%';
+        });
+      </script>
+    {% endif %}
+  </body>
+</html>

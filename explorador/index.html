@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explorador del PGN 2027 — En qué se gasta TU PLATA en Paraguay, en simple</title>
+<meta name="description" content="El presupuesto de Paraguay 2027 explicado en simple: totales, instituciones, salud y la crisis sanitaria. Datos oficiales del MEF, cada cifra con su fuente.">
+<meta property="og:title" content="Explorador del PGN 2027 — En qué se gasta TU PLATA">
+<meta property="og:description" content="Gs. 166,3 billones en 2027, explicados en simple: quién los maneja, en qué se gastan y la crisis de salud con datos verificados.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+:root{--verde:#0b5d3b;--verde2:#2f8f64;--miel:#e0a92e;--ladrillo:#c0502f;--azul:#356b8c;--tinta:#1b2a24;--papel:#f7f4ee;--papel2:#efe9dd;--gris:#64746c;--linea:#d9cfbd;}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--papel);color:var(--tinta);line-height:1.55}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.01em}
+h2,h3{scroll-margin-top:72px}
+a{color:var(--verde2)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+/* header */
+.hero{background:var(--verde);color:#fdfaf2;padding:56px 0 36px}
+.hero .eyebrow{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--miel);font-weight:600;margin-bottom:10px}
+.hero h1{font-size:clamp(1.7rem,3.4vw,2.6rem);max-width:22ch}
+.hero .flag{font-size:.9em;vertical-align:middle}
+.hero .headline{margin-top:16px;font-family:'Fraunces',serif;font-weight:700;font-size:clamp(1.05rem,2.2vw,1.6rem);color:var(--miel);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:none}
+.hero .hero-lede{margin-top:14px;max-width:80ch;color:#dceadf;font-size:.98rem}
+.hero p strong{color:var(--miel)}
+/* tabs */
+.tabs{background:var(--papel2);border-bottom:1px solid var(--linea);position:sticky;top:0;z-index:5}
+.tabs .wrap{display:flex;gap:6px;padding-top:0;padding-bottom:0}
+.tab{border:0;background:transparent;font:600 .95rem 'Inter';color:var(--tinta);padding:15px 18px;cursor:pointer;border-bottom:3px solid transparent;transition:color .15s ease}
+.tab:hover{color:var(--verde)}
+.tab.on{color:var(--verde);border-bottom-color:var(--miel)}
+main{padding:30px 0 48px}
+.tabpane{animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1}}
+.sec{margin-top:36px}
+.sec .sup{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--verde2);font-weight:700;margin-bottom:5px;display:block}
+.sec h2{font-size:1.4rem;margin-bottom:7px}
+.sec .lede{color:#48564f;max-width:78ch;margin-bottom:16px;font-size:.95rem}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:14px;margin-top:16px}
+.stat{display:flex;flex-direction:column;background:#fff;border:1px solid var(--linea);border-left:4px solid var(--verde2);border-radius:10px;padding:15px 16px 14px;box-shadow:0 1px 3px rgba(20,40,30,.06)}
+.stat-k{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#5b6b63;font-weight:600}
+.stat-v{font-size:1.4rem;font-weight:700;margin-top:8px;font-family:'Fraunces',serif;overflow-wrap:anywhere;word-break:break-word;line-height:1.25}
+.stat-f{font-size:.77rem;color:var(--gris);margin-top:auto;padding-top:10px;overflow-wrap:anywhere}
+/* charts */
+.chart{width:100%;height:430px;background:#fff;border:1px solid var(--linea);border-top:3px solid var(--miel);border-radius:10px;padding:12px 10px 8px;box-shadow:0 1px 3px rgba(20,40,30,.05)}
+.chart.small{height:340px}
+.chart.tall{height:520px}
+.toggle{display:inline-flex;gap:8px;margin-bottom:12px}
+.toggle button{border:1px solid var(--verde2);background:#fff;color:var(--verde2);padding:6px 14px;cursor:pointer;border-radius:999px;font:600 .88rem 'Inter';transition:background .15s ease,color .15s ease}
+.toggle button:hover{background:var(--verde2);color:#fff}
+.toggle button.on{background:var(--verde2);color:#fff}
+.toggle button:focus-visible{outline:3px solid var(--miel);outline-offset:1px}
+/* salud */
+.salud-banner{background:var(--verde);color:#fdfaf2;border-radius:12px;padding:24px 26px;margin-top:16px}
+.salud-banner h2{color:#fdfaf2;font-size:1.45rem}
+.salud-banner p{color:#dceadf;margin-top:8px;max-width:72ch;font-size:.95rem}
+.defs{background:#fff;border:1px solid var(--linea);border-left:4px solid var(--azul);border-radius:10px;padding:18px 20px;margin:18px 0}
+.defs h3{font-size:1.05rem;margin-bottom:12px}
+.def{margin:11px 0;font-size:.95rem;color:#3c4a43}
+.def b{color:var(--verde)}
+.progrow{display:grid;grid-template-columns:36px 1fr;gap:12px;background:#fff;border:1px solid var(--linea);border-radius:10px;padding:16px;margin-bottom:12px;box-shadow:0 1px 3px rgba(20,40,30,.04)}
+.pr-num{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--miel);font-weight:700}
+.pr-top{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.pr-name{font-weight:700;font-size:.98rem}
+.pr-code{font-family:'Fraunces',serif;background:var(--papel2);border:1px solid var(--linea);border-radius:6px;padding:1px 6px;font-size:.78rem;color:var(--verde2)}
+.pr-desc{color:#5b6b63;font-size:.9rem;margin-top:3px}
+.pr-meta{text-align:right;flex-shrink:0}
+.pr-amt{font-weight:700;font-size:1.02rem}
+.pr-pct{color:var(--verde2);font-weight:600}
+.pr-bar{grid-column:2;height:8px;background:var(--papel2);border-radius:99px;overflow:hidden;margin-top:8px}
+.pr-bar-in{height:100%;background:linear-gradient(90deg,var(--verde2),var(--verde));border-radius:99px}
+.pr-src{grid-column:2}
+.cita{color:var(--gris);font-size:.78rem}
+.nota{margin-top:16px;padding:14px 16px;background:var(--papel2);border-left:4px solid var(--miel);border-radius:8px;font-size:.92rem;color:#3c4a43}
+footer{margin-top:48px;padding:24px 0;background:var(--verde);color:#dceadf;font-size:.82rem}
+footer a{color:var(--miel)}
+ul#fuentes{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:8px;margin-top:12px}
+ul#fuentes li{background:#fff;border:1px solid var(--linea);border-radius:8px;padding:9px 12px;font-size:.88rem}
+ul#fuentes li a{text-decoration:none;border-bottom:1px dotted var(--verde2)}
+:focus-visible{outline:3px solid var(--miel);outline-offset:2px}
+@media (max-width:640px){.wrap{padding:0 14px}.pr-meta{text-align:left}.hero .headline{white-space:normal}.tabs .wrap{flex-wrap:wrap;padding:6px 0 0}.tab{padding:10px 12px;font-size:.85rem}.grid{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}.chart{height:340px}.chart.small{height:300px}.chart.tall{height:440px}.sec h2{font-size:1.25rem}}
+/* informe técnico */
+.informe{max-width:82ch;margin:0 auto;background:#fff;border:1px solid var(--linea);border-top:4px solid var(--miel);border-radius:10px;padding:26px 30px;line-height:1.65;color:var(--tinta)}
+.informe h1{font-size:1.7rem;line-height:1.25;margin:0 0 6px}
+.informe h2{font-size:1.22rem;margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--papel2);color:var(--verde)}
+.informe h3{font-size:1.03rem;margin:20px 0 8px;color:var(--verde2)}
+.informe p{margin:10px 0}
+.informe ul,.informe ol{margin:10px 0 10px 22px}
+.informe li{margin:4px 0}
+.informe strong{font-weight:700}
+.informe a{color:var(--verde2);text-decoration:underline}
+.informe code{background:var(--papel2);border:1px solid var(--linea);border-radius:4px;padding:1px 5px;font-size:.86em}
+.informe pre{background:var(--tinta);color:#eef4ef;border-radius:8px;padding:12px 14px;overflow:auto;margin:12px 0;font-size:.85rem}
+.informe pre code{background:none;border:0;color:inherit;padding:0}
+.informe table{border-collapse:collapse;width:100%;margin:14px 0;font-size:.92rem}
+.informe th,.informe td{border:1px solid var(--linea);padding:7px 10px;text-align:left;vertical-align:top}
+.informe th{background:var(--verde);color:#fff;font-weight:600}
+.informe tr:nth-child(even) td{background:var(--papel)}
+.informe blockquote{margin:14px 0;padding:10px 14px;background:var(--papel2);border-left:4px solid var(--miel);border-radius:6px;color:#33443c}
+.informe blockquote p{margin:4px 0}
+.informe hr{border:0;border-top:1px solid var(--linea);margin:22px 0}
+@media (max-width:640px){.informe{padding:18px 16px}.informe h1{font-size:1.35rem}}
+.skip{position:absolute;left:-9999px;top:0}
+.skip:focus{position:fixed;left:12px;top:12px;z-index:300;background:var(--miel);color:var(--tinta);padding:8px 14px;border-radius:6px;font-weight:700}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#netwarn{display:none;background:#fff3e0;border:1px solid var(--miel);color:#5b3a00;padding:10px 14px;border-radius:8px;margin:14px 0;font-size:.9rem}
+#netwarn.on{display:block}
+.rep-ctrl{display:flex;gap:8px;margin:10px 0 4px;flex-wrap:wrap}
+.rep-ctrl button{border:1px solid var(--verde2);background:#fff;color:var(--verde2);padding:5px 12px;border-radius:999px;cursor:pointer;font-weight:600;font-size:.85rem}
+.rep-ctrl button:hover{background:var(--verde2);color:#fff}
+.sharebar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:#fff;border:1px solid var(--linea);border-radius:8px;padding:8px 12px;margin:12px 0;font-size:.85rem}
+.sharebar-t{color:var(--verde);font-weight:700}
+.sharebar button,.sharebar a{border:1px solid var(--verde2);background:#fff;color:var(--verde2);padding:4px 10px;border-radius:999px;cursor:pointer;font-weight:600;font-size:.8rem;text-decoration:none;display:inline-block}
+.sharebar button:hover,.sharebar a:hover{background:var(--verde2);color:#fff}
+.sharebar-ok{color:var(--verde);font-weight:600}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+
+@media print{
+  .tabs,.skip,.toggle,#netwarn,.rep-ctrl,footer{display:none !important}
+  .tabpane{display:block !important;padding:0}
+  body{background:#fff}
+  .chart,.sec,.stat,.informe{page-break-inside:avoid}
+  .wrap{max-width:none}
+}
+.toc{background:#fff;border:1px solid var(--linea);border-left:4px solid var(--verde2);border-radius:8px;padding:10px 14px;margin:16px 0;font-size:.9rem;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+.toc b{color:var(--verde)}
+.toc a{color:var(--verde2);font-weight:600}
+.tab-scroll{overflow-x:auto;margin:14px 0}
+.tab-scroll table{margin:0}
+.stat-v{font-size:clamp(1.05rem,4.5vw,1.45rem)}
+body{overflow-x:hidden}
+@media (max-width:560px){
+  .grid{grid-template-columns:1fr;gap:10px}
+  .stat{padding:12px 13px}
+  .stat-v{font-size:1.15rem}
+  header.hero{padding:34px 0 20px}
+  .hero h1{font-size:1.45rem}
+  .sec h2{font-size:1.12rem}
+  .chart{height:300px}.chart.small{height:270px}.chart.tall{height:400px}
+  .informe{padding:16px 14px;font-size:.95rem}
+  .cita{font-size:.74rem}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido principal</a>
+<header class="hero"><div class="wrap">
+<div class="eyebrow">Presupuesto General de la Nación · Paraguay · 2027</div>
+<h1>Explorador del PGN 2027</h1>
+<p class="headline">En qué se gasta TU PLATA explicado de forma simple</p>
+<p class="hero-lede">El proyecto de Presupuesto 2027 quiere gastar <strong>Gs. 166,3 billones</strong> (≈ USD 25.700 millones; 11,2% más que 2026). Acá respondemos, en simple: ¿de cuánta plata hablamos, quién la maneja y para qué alcanza? Fuentes oficiales del MEF.</p>
+</div></header>
+
+<nav class="tabs"><div class="wrap" role="tablist" aria-label="Secciones del explorador">
+<button class="tab on" data-tab="resumen" role="tab" aria-selected="true" id="tabbtn-resumen">Resumen</button>
+<button class="tab" data-tab="salud" role="tab" aria-selected="false" id="tabbtn-salud">Salud: a dónde va el dinero (Gs. 18,17 billones)</button>
+<button class="tab" data-tab="crisis" role="tab" aria-selected="false" id="tabbtn-crisis">Salud en crisis</button>
+<button class="tab" data-tab="informe" role="tab" aria-selected="false" id="tabbtn-informe">Informe técnico</button>
+</div></nav>
+
+<main class="wrap" id="main" tabindex="-1">
+<div id="netwarn">Los gráficos y el informe tardan unos segundos en cargar y necesitan conexión a internet (bibliotecas externas). Si no ves nada aquí, revisá tu conexión.</div>
+<div class="sharebar" role="group" aria-label="Compartir esta página">
+  <span class="sharebar-t">Compartir esta página</span>
+  <button type="button" data-share="native">Compartir…</button>
+  <button type="button" data-share="copy">Copiar enlace</button>
+  <a href="#" data-share="wa" target="_blank" rel="noopener">WhatsApp</a>
+  <a href="#" data-share="fb" target="_blank" rel="noopener">Facebook</a>
+  <a href="#" data-share="x" target="_blank" rel="noopener">X</a>
+  <span class="sharebar-ok" hidden>¡Enlace copiado!</span>
+</div>
+<!-- ======= RESUMEN ======= -->
+<section class="tabpane" id="tab-resumen" role="tabpanel" aria-labelledby="tabbtn-resumen">
+  <div class="grid" id="cards"></div>
+
+  <nav class="toc" aria-label="Índice de esta sección">
+    <b>En esta página:</b>
+    <a href="#sec-1">¿Quién administra?</a> · <a href="#sec-2">¿En qué tipo de gasto?</a> · <a href="#sec-3">Áreas prioritarias</a> · <a href="#sec-4">¿Qué cambia?</a>
+  </nav>
+
+  <div class="sec" id="sec-1">
+    <span class="sup">1 · quién administra</span>
+    <h2>Las 10 instituciones con más recursos</h2>
+    <p class="lede"><b>De un vistazo:</b> estas 10 instituciones manejan ~51% de todo el presupuesto. La más grande es el MEF (15%), que además de ministerio es el que paga la deuda. Salud (11%) y Educación (6%) son las mayores carteras sociales.</p>
+    <div class="toggle" id="tg"><button class="on" data-y="2027">2027</button><button data-y="2026">2026</button></div>
+    <div class="chart" id="instituciones"></div>
+    <div class="nota"><b>En simple:</b> si los Gs. 166,3 billones fueran 100 guaraníes, el MEF tendría 15, Salud 11 y Educación 6. El botón de arriba compara con 2026.</div>
+  </div>
+
+  <div class="sec" id="sec-2">
+    <span class="sup">2 · la forma</span>
+    <h2>¿En qué tipo de gasto se va la plata?</h2>
+    <p class="lede"><b>De un vistazo:</b> la mayor parte (61%) es gasto de funcionamiento: sueldos, servicios, remedios. Un tercio (35%) va a obras e inversión. Y casi 5% se destina a pagar deuda.</p>
+    <div class="chart small" id="economia"></div>
+    <div class="nota"><b>En simple:</b> «Corriente» = funcionamiento (sueldos, luz, insumos) · «capital» = obras e inversión · «financiamiento» = deuda. De cada 10 guaraníes: ~6,1 funcionamiento; ~3,5 obras; &lt;1 deuda.</div>
+  </div>
+
+  <div class="sec" id="sec-3">
+    <span class="sup">3 · las prioridades</span>
+    <h2>Salud, educación, seguridad e infraestructura</h2>
+    <p class="lede"><b>De un vistazo:</b> las 5 áreas prioritarias declaradas concentran ~1 de cada 3 guaraníes. Salud (11%) y Educación (6%) encabezan el gasto social.</p>
+    <div class="chart small" id="areas"></div>
+    <div class="nota"><b>En simple:</b> de cada 100 guaraníes del presupuesto, ~31 van a estas 5 áreas; el resto se reparte entre todas las demás instituciones.</div>
+  </div>
+
+  <div class="sec" id="sec-4">
+    <span class="sup">4 · qué cambia</span>
+    <h2>Qué sube y qué baja respecto de 2026</h2>
+    <p class="lede"><b>De un vistazo:</b> Salud es el gran ganador (+77%); el MEF es la única de las grandes que recorta (–0,8%). En verde los aumentos, en rojo los recortes.</p>
+    <div class="chart" id="variaciones"></div>
+  </div>
+
+  <div class="defs">
+    <h3>Cómo se hicieron estos números</h3>
+    <p class="cita">Cifras de fuentes oficiales (Ley PGN 2027 del MEF, series de presupuesto, MSPyBS, Contraloría) y de organismos internacionales (OMS/OCDE/Banco Mundial/FMI). Cada cifra cita su fuente y página; solo se muestran datos verificados; las estimaciones llevan su etiqueta. El presupuesto 2027 es un proyecto, aún no sancionado por el Congreso. Esta página es educativa y no constituye asesoramiento oficial.</p>
+  </div>
+</section>
+
+<!-- ======= SALUD ======= -->
+<section class="tabpane" id="tab-salud" role="tabpanel" aria-labelledby="tabbtn-salud" hidden>
+  <div class="salud-banner">
+    <h2>Salud: a dónde va el dinero (Gs. 18,17 billones)</h2>
+    <p>El presupuesto del Ministerio de Salud pasa de <strong>Gs. 10,26 billones (2026) a Gs. 18,17 billones (2027, proyecto)</strong> — un aumento de <strong>Gs. 7,9 billones (+77%)</strong>. Esta pestaña desglosa <strong>en qué se gasta el total de los Gs. 18,17 billones</strong>, programa por programa, en criollo.</p>
+  </div>
+
+  <div class="grid" id="scards" style="margin-top:18px"></div>
+  <p class="cita" id="saludNotaTotal" style="margin-top:6px"></p>
+
+  <div class="sec">
+    <span class="sup">presupuesto por año (últimos años)</span>
+    <h2>El presupuesto de Salud en los últimos años</h2>
+    <p class="lede">De Gs. 9,70 billones (2025) a Gs. 18,17 billones (proyecto 2027). Solo se grafican años con dato verificado.</p>
+    <div class="chart small" id="saludSerie"></div>
+    <p class="cita" style="margin-top:6px">Serie limitada a años con dato verificado. 2018–2024 quedan pendientes de OCR de las Leyes escaneadas (ver “Informe técnico”); 2027 = proyecto, aún no sancionado.</p>
+  </div>
+
+  <div class="sec">
+    <span class="sup">cómo se reparte</span>
+    <h2>Los programas del ministerio</h2>
+    <p class="lede">Cada destino y qué significa, del más al menos financiado.</p>
+    <div class="chart tall" id="saludDonut"></div>
+  </div>
+
+  <div class="sec" id="saludList" style="margin-top:10px"></div>
+
+  <div class="nota" id="saludNota"></div>
+
+  <div class="defs">
+    <h3>¿Qué significa cada concepto?</h3>
+    <div id="saludDefs"></div>
+  </div>
+</section>
+
+<section class="tabpane" id="tab-crisis" role="tabpanel" aria-labelledby="tabbtn-crisis" hidden>
+  <div class="salud-banner" style="background:var(--tinta)">
+    <h2>¿Por qué está en crisis la salud pública?</h2>
+    <p>En 2026 el Estado paga a los médicos menos que en 2012, debe más de mil millones de dólares a las farmacéuticas y varios hospitales quedan sin remedios. Estos son los datos, explicados <strong>sin tecnicismos</strong> y con cada cifra <strong>verificada</strong>.</p>
+  </div>
+
+  <div class="nota" style="margin-top:18px"><b>En simple:</b> el presupuesto de Salud crece a Gs. 18,17 billones en el proyecto 2027 (casi 4× el de 2016), <b>pero</b> la plata tiene tres problemas: no alcanza para la deuda vieja, los sueldos quedaron rezagados y los controles de compras son débiles. En esta pestaña explicamos cada uno.</div>
+
+  <div class="grid" id="crisisCards" style="margin-top:18px"></div>
+
+  <div class="sec">
+    <span class="sup">1 · la deuda</span>
+    <h2>El Estado debe dinero a las farmacéuticas</h2>
+    <p class="lede"><b>¿Qué es esto?</b> Cuando el Ministerio de Salud compra medicamentos y no los paga a tiempo, acumula una deuda gigante. <b>¿Qué muestra el gráfico?</b> Cuánto se debía, en millones de dólares, entre 2022 y 2026.</p>
+    <div class="chart" id="crisisDeuda"></div>
+    <div class="nota"><b>En simple:</b> gastar y que el pago se atrase es como usar una tarjeta sin límite. En 2026 la deuda pasó de <b>USD 1.000 millones</b> — el doble del presupuesto anual de compra de remedios — y eso hace que los laboratorios dejen de entregar. (Parte de las cifras son estimaciones de las cámaras del sector, no del Ministerio: se leen como aproximaciones.)</div>
+  </div>
+
+  <div class="sec">
+    <span class="sup">2 · qué pagás vos</span>
+    <h2>Gasto de bolsillo: lo que sale de tu bolsillo</h2>
+    <p class="lede"><b>¿Qué es?</b> "Gasto de bolsillo" = plata que paga la persona en la farmacia o clínica. <b>¿Qué es la OCDE?</b> Un club de 38 países ricos (EE. UU., España, Chile) con el que nos comparamos. <b>¿Qué dice el gráfico?</b> En Paraguay el <b>36%</b> de todo lo gastado en salud lo paga la persona — casi el doble que en la OCDE (~19%).</p>
+    <div class="chart small" id="crisisOop"></div>
+    <div class="nota"><b>En simple:</b> de cada 9 guaraníes que cuesta la salud, más de 3 salen de tu bolsillo. Por eso hay gente que vende cosas o hace "polladas" para comprar remedios.</div>
+  </div>
+
+  <div class="sec">
+    <span class="sup">3 · el tamaño</span>
+    <h2>¿Cuánto gasta el país en salud? (% del PIB)</h2>
+    <p class="lede"><b>¿Qué es el PIB?</b> Todo lo que produce el país en un año. Este porcentaje dice cuánto de esa producción se destina a salud. <b>Lectura:</b> Paraguay (8,4%) está en la zona de América Latina (7,9%) y cerca de la OCDE (9,2%): el problema no es (solo) que se gaste poco.</p>
+    <div class="chart small" id="crisisPib"></div>
+    <div class="nota"><b>En simple:</b> de cada 100 guaraníes que produce el Paraguay en un año, ~8,4 se destinan a salud. El país ya gasta "en la zona" de sus vecinos — el problema está en cómo se gasta y en cuánto termina pagando la gente.</div>
+  </div>
+
+  <div class="sec">
+    <span class="sup">4 · los sueldos</span>
+    <h2>El sueldo de los médicos vale cada vez menos</h2>
+    <p class="lede"><b>¿Qué mide?</b> El salario base es de Gs. 5 millones por "vínculo" de 12 horas semanales. Como los precios subieron ~105% en 13 años (inflación) y el sueldo casi no se ajustó, con el mismo sueldo hoy se compra <b>≈la mitad</b> de lo que se compraba en 2012.</p>
+    <div class="chart small" id="crisisSalario"></div>
+    <div class="nota"><b>En simple:</b> la plata del médico rinde la mitad que en 2012. Ese es el corazón de la huelga: piden pasar de 5 a 8 millones por vínculo.</div>
+  </div>
+
+  <div class="sec">
+    <span class="sup">5 · mini-diccionario</span>
+    <h2>¿Qué significa cada palabra que usamos?</h2>
+    <div class="defs"><div id="crisisGlosario"></div></div>
+  </div>
+
+  <div class="sec">
+    <span class="sup">6 · línea de tiempo</span>
+    <h2>Huelga médica y sus consecuencias (2026)</h2>
+    <ul id="crisisTimeline"></ul>
+  </div>
+
+  <div class="nota" id="crisisNota"></div>
+</section>
+
+<section class="tabpane" id="tab-informe" role="tabpanel" aria-labelledby="tabbtn-informe" hidden>
+  <div class="rep-ctrl">
+  <button type="button" data-adj="-1" aria-label="Reducir tamaño de letra">A−</button>
+  <button type="button" data-adj="1" aria-label="Aumentar tamaño de letra">A+</button>
+  <button type="button" data-print aria-label="Imprimir o guardar en PDF">Imprimir / PDF</button>
+</div>
+<article class="informe" id="informeWrap"></article>
+  <p class="cita" style="margin-top:16px">Fuente del texto: informe de investigación del proyecto ("Documento Maestro — Crisis del Sistema de Salud de Paraguay 2027"). Cada cifra cita su fuente verificada.</p>
+  <script type="text/markdown" id="informeMd"># Crisis del sistema de salud de Paraguay: por qué faltan médicos, medicamentos y dinero (Informe PGN 2027)
+
+**Informe de investigación · 4 de septiembre de 2026**
+**Sistema de gestión:** Documento Maestro "Investigación: Crisis del Sistema de Salud de Paraguay (2027)" — **Base de evidencia:** sistema de evidencia (`el sistema de evidencia del proyecto`, 132 afirmaciones; 122 verificados, 3 rechazados, 7 pendientes sin resolver — cierre 2026-09-04) · Fact-checks (`las actas de verificación`) · Hallazgos por módulo (`los informes temáticos`).
+
+---
+
+## 1. Resumen ejecutivo
+
+**Contexto.** El PGN 2027, presentado por el Ejecutivo el 1 de septiembre de 2026, asigna al Ministerio de Salud Pública y Bienestar Social (MSPyBS) **Gs. 18.168.392.998.474 (proyecto, aún no sancionado)** — frente a Gs. 10,26 billones sancionados en 2026, Gs. 9,70 billones en 2025 y Gs. 4,56 billones en 2016 (serie Ley 5.554/2016, Ley 7.408/2024, Ley 7.609/2025, Proyecto de Ley PGN 2027). El aumento nominal es mayoritariamente para **medicamentos e insumos** (≈USD 760 M; +260 M vs 2026) (MEF (nota 31/08/2026)) y NO incluye reajuste salarial general de los médicos (MEF y prensa (2026)).
+
+**Objetivo.** Determinar si el aumento presupuestario resolverá la crisis sanitaria o si una parte del efecto se pierde por problemas estructurales de deuda, compras, condiciones laborales, control y gobernanza.
+
+**Método.** Revisión documental jerárquica (fuentes oficiales > organismos internacionales > prensa solo contexto), 132 afirmaciones registradas, fact-check con doble fuente y 122 afirmaciones verificadas (cierre 2026-09-04, tras la 2.ª pasada de verificación). Detalle en §2.
+
+**Resultados principales.**
+1. **El salario médico perdió ~la mitad de su poder de compra desde 2012** (inflación acumulada ≈105%; reclamo base Gs. 5M→8M por vínculo de 12 h) (Ley 7.137/2023–cálculo propio). El PGN 2027 no prevé reajuste general (MEF y prensa (2026)).
+2. **La deuda con farmacéuticas es estructural** (≈USD 1.000–1.220 M en 2026; reconocida por el FMI en el Artículo IV) y **el 2027 no la cubre** (tratamiento diferenciado) (MEF y cámaras farmacéuticas, FMI, Artículo IV (2026), MEF (31/08/2026)).
+3. **El desabastecimiento es real y medible** (hasta 72% de ítems en stock crítico según documento interno MSPyBS; el Ministerio reporta 15,4%), con consecuencias sobre pacientes (amparos, gasto de bolsillo del 36,3%) (–).
+4. **El gasto de bolsillo (36,3%) casi duplica el promedio OCDE (~19%)**: la protección financiera es el flanco más débil, más que el monto presupuestado ( OCDE (2021-2023)).
+5. **La densidad de médicos ya es comparable a la OCDE** (3,9 vs ~3,7 por 1.000 tras revisión metodológica): el problema es de condiciones y remuneración, no de número bruto (Banco Mundial/OMS (2022), OCDE (2021-2023)).
+
+**Conclusión.** El presupuesto 2027 puede producir **mejoras reales y visibles** (financiamiento de insumos, desprecarización parcial), pero la evidencia indica que **no revertirá por sí solo** la crisis mientras persistan los patrones documentados de deuda acumulada, brecha compras/pagos, control débil y conflicto salarial.
+
+---
+
+## 2. Metodología
+
+**Diseño de la investigación.** Revisión documental de política sanitaria con enfoque de sistema (marco OMS de "building blocks" organizado en funciones de financiamiento del Banco Mundial y benchmarks OCDE) — ver `el marco analítico`.
+
+**Fuentes y jerarquía.** (1) Fuentes oficiales: leyes de presupuesto 2016–2025, MSPyBS, MEF, Contraloría, Congreso, Ministerio Público; (2) organismos internacionales: OMS/OPS, OCDE, Banco Mundial, FMI; (3) prensa solo para contexto y triangulación, nunca como cifra primaria.
+
+**sistema de evidencia y fact-check.** Más de 130 afirmaciones extraídas de los documentos de contexto y de la investigación, cada una con fuente, fecha, nivel de evidencia (1–4) y tipo jurídico (hecho documentado / hallazgo de auditoría / denuncia / imputación / condena / análisis). Cada afirmación citada en este informe está en estado **verificadas** (56) tras el cruce con doble fuente o fuente oficial/internacional directa; los rechazos y los pendientes quedaron documentados en las actas de verificación.
+
+**Límites (reproducibilidad y cautelas).**
+- Varios datos provienen de **declaraciones** (ministros, cámaras, gremios) y de **prensa citando documentos/oficiales**; se indican como tales (p. ej., la brecha "compras vs pagos" es declaración de CRIPFA; la deuda "1.027 M" es estimación de la cámara sobre registros del MSPyBS, no cifra oficial — MEF y cámaras farmacéuticas, CRIPFA (declaración)).
+- Serie de presupuesto 2018–2024 pendiente de OCR (leyes escaneadas) no se usan cifras no verificadas.
+- Los indicadores internacionales usan años y metodologías diversas (2011–2024) se citan con su año.
+- Un **hallazgo de la Contraloría, una denuncia o una imputación no constituyen culpabilidad**; este informe distingue explícitamente esas categorías (regla editorial del protocolo).
+
+**Declaración de uso de IA.** Durante la preparación de este informe se utilizaron asistentes de IA generativos (LLM) para la investigación asistida, el análisis de documentos y el borrador del texto. Todas las cifras fueron verificadas contra sus fuentes y la responsabilidad del contenido es de los autores.
+
+---
+
+## 3. Hallazgos por dimensión
+
+### 3.1 Salarios y condiciones (el origen de la huelga)
+
+- **Estructura.** El salario médico es por "vínculo" de 12 horas semanales (Ley 7.137/2023) sueldo base ≈ **Gs. 5.000.000**; no hay escalafón público general (Ley 7.137/2023).
+- **Reclamo documentado.** El gremio demanda pasar de Gs. 5M a **Gs. 8M** por vínculo y denuncia salarios sin actualización desde 2012; la evidencia fiable (nómina pública) documenta una caída real de la mediana del **−25,8% entre 2016 y 2025** (Sinamed (reclamo)).
+- **Erosión real.** Inflación acumulada 2012–2025 ≈ **105%**; con la escala básica sin ajustar, el poder de compra ronda el **48–50%** del nivel de 2012 (BCP/Banco Mundial, cálculo propio).
+- **Negociación y huelga.** Huelga nacional (24–28 ago 2026) sin acuerdo; oferta oficial 2026 (escalafón +Gs. 500 mil–4 M, ~USD 60 M, 10.626 médicos) rechazada por Sinamed; **el PGN 2027 no contempla reajuste general** (MEF y prensa (2026), MEF y prensa (2026)). Desprecarización en curso: **2.390 médicos** anunciados a nombrar, concurso con **1.644 adjudicados** (sep-2026) (MSPBS (concurso 2026)). Ley 6.586/2020 de desprecarización reclamada sin avances (Ley 6.586/2020).
+- Nota: según las declaraciones (Gobierno 03/09/2026: ≈12.000 médicos en el sistema; gremio: ≈11.000), la cifra de **≈9.000 contratados (~82%)** se mantiene como reclamo gremial con respaldo en el orden de magnitud del total (Declaraciones Gobierno/Sinamed (2026)/Declaraciones Gobierno/Sinamed).
+
+### 3.2 Deuda del MSPyBS
+
+- **Serie documentada** (2022→2026): ≈USD 150–152 M (2021-22) → **MSPyBS ≈340 M + IPS ≈323 M** (ago-2025) → ≈814 M "validada por el MSPyBS" (ene-2026) → ≈1.000–1.220 M (2026, según cámara/MEF/FMI) → saldo ≈600 M tras cesión de USD 320 M (sep-2026) (MEF y cámaras farmacéuticas, MEF (cesión 2026)).
+- **FMI (Artículo IV, jun-2026):** atrasos de pagos ≈**USD 1.220 M** (≈1.000 M farmacéuticos) y **≈USD 280 M "fuera de los libros"** por doble contabilidad MSPyBS/MEF; la meta de deuda flotante no se cumplió (FMI, Artículo IV (2026)).
+- **Causas estructurales** (FMI/MEF): contratos plurianuales **ejecutados en un solo año** y obligaciones **asumidas sin disponibilidad** presupuestaria; pagar tarde **encarece insumos** (OMS/Banco Mundial (2022) — la deuda a proveedores es también un coste, no solo un pasivo).
+- **El 2027 no la cubre.** El financiamiento de USD 760 M es para **compras nuevas**; la deuda vieja tendrá "tratamiento diferenciado" sin mecanismo cerrado (MEF (31/08/2026)).
+- **Efecto en la oferta:** procesos declarados desiertos y suspensiones de terapias oncológicas (mar-2026) (MSPBS y prensa (2026)).
+
+### 3.3 Medicamentos e insumos
+
+- **Financiamiento 2027:** ≈USD 760 M (MEF (nota 31/08/2026)) el Mensaje del proyecto enmarca Gs. 2,4 billones al "flujo continuo de medicamentos e insumos", Gs. 6,3 billones a compromisos del sistema sanitario y Gs. 1,2 billones al INCAN (Mensaje del Proyecto (2027)).
+- **Compras y control.** El MSPyBS compra vía UOC bajo DNCP (plurianuales, catálogo, directas por excepción/amparos). Hallazgos de la Contraloría documentados: licitaciones objetadas en el **Hospital de Clínicas (≈USD 1,56 M, 20 observaciones)** y **FCM-UNA (Gs. 12.401 M)**, **Gs. 2.200 M en fármacos vencidos**, acceso irregular al **Parque Sanitario MRA II**, gestión del ministerio calificada **49%** (57 observaciones) y **medicamentos vencidos en el INCAN (Gs. 5.497 M; perjuicio estimado ≈USD 58 M)** (Contraloría–Contraloría). Se citan como hallazgos de auditoría, no como delitos probados.
+- **Trazabilidad.** El sistema **SICIAP existe** (`siciap.mspbs.gov.py`) el hallazgo es que **no refleja el stock real** (SICIAP/MSPBS). Execución territorial en zonas de necesidad extrema (Alto Paraguay) con provisiones mínimas (≈Gs. 351–495 M por envío) (MSPBS).
+- **Ejecución y territorio (MEF/DGP (ejecución 2025), MSPBS (provisión territorial 2026)).** Ejecución oficial del MSPyBS a julio-2025: Gs. 4.824 mil millones (47,9% del año; Gs. 3.027 mil M a regiones/hospitales). Provisión documentada a zonas de mayor necesidad: Alto Paraguay Gs. 467,2 M y Pte. Hayes Gs. 697,3 M (2026).
+- **Desabastecimiento.** Documento interno: **1.453 de 2.001 ítems en stock cero + 469 en crítico (mar-2026)**; el MSPyBS reporta oficialmente 15,4% en stock cero (matiz a citar con ambas cifras) . **Consecuencias:** 120 amparos en 15 días (ene-2026, ~100% oncológicos; Defensor del Pueblo) y referencias de 1.360–1.380 amparos ago–dic 2025 (Defensor del Pueblo) **gasto de bolsillo del 36,3%** (2023) emergencia sanitaria declarada (Ley 7.471/2025) (Ley 7.471/2025). El indicador SDG 3.b.3 (disponibilidad de medicamentos esenciales) no se publica para Paraguay (OMS (sin serie publicada) ). Sobre el control de calidad, la **suspensión de IMEDIC** (12/06/2020, recomendación de DINAVISA) y el retiro de oncológicos están documentados (MSPBS/DINAVISA (Imedic)) y existe **condena firme** (3 años) por el ingreso irregular de camas hospitalarias vinculado a IMEDIC (Justicia — sentencia firme (camas Imedic)).
+
+### 3.4 Gasto y eficiencia (benchmark preliminar)
+
+- PY 2023: **8,36% del PIB** en salud corriente, **USD 526 per cápita (~1.469 PPP)**, gasto público doméstico ≈55%, **OOP 36,3%** (Banco Mundial (2023)–Banco Mundial (2023), Banco Mundial/OPS (2023)).
+- Comparación OCDE: 9,2% del PIB, ≈USD 5.000 PPP per cápita, OOP ~19%, público ≈74–75% (OCDE (2021-2023)). LatAm: 7,94% del PIB, 1.697,8 PPP per cápita, OOP 29,7% (Banco Mundial/OPS (2023)).
+- Personal: médicos 3,9/1.000 (PY, tras revisión 2022) vs 3,7 OCDE vs 2,6 LAC (Banco Mundial/OMS (2022)–Banco Mundial/OPS (2023)) enfermeras+parteras 9,4/1.000 (Banco Mundial/OMS (2022)).
+- Cobertura y resultados: índice UHC **3.8.1 = 79** (OMS (2023)) gasto catastrófico 10,54% (dato 2011, desactualizado, OMS (2011)) **esperanza de vida 74 años; mortalidad <5: 16/1.000** (Banco Mundial (2024)).
+
+---
+
+## 4. Análisis de causalidad (¿por qué pasa esto?)
+
+**Hipótesis verificable propuesta:** la crisis no es solo de presupuesto, sino de **la cadena completa** presupuesto → compra → entrega → pago → stock → distribución → paciente. Los hallazgos permiten reconstruir tres circuitos que se refuerzan:
+
+1. **Circuito financiero (deuda↔desabastecimiento).** Compras por encima de la capacidad de pago (declaración CRIPFA; CRIPFA (declaración)) → deuda acumulada (MEF y cámaras farmacéuticas, FMI, Artículo IV (2026)) → proveedores dejan de entregar o suspenden terapias (MSPBS y prensa (2026)) → escasez en hospitales  → amparos y gasto de bolsillo (Defensor del Pueblo). El FMI y el Banco Mundial señalan este mismo mecanismo en países de ingreso medio (OMS/Banco Mundial (2025), OMS/Banco Mundial (2022)). Desglose 2026 (Ley 7.609/2025 (desglose 2026)): corriente Gs. 9.643.147.661.461 y resto (capital+financiamiento) Gs. 621.768.222.900. El EF2017 se rigió por la Ley 5.554/2016 prorrogada (Ley 5.554/2016 (prorrogada)). En el IPS, el Informe Financiero PE 2025 documenta hallazgos por daño potencial > Gs. 5.300 M y pagos a jubilados fallecidos > Gs. 58.000 M (CGR — Informe Financiero del IPS).
+2. **Circuito laboral (salario↔capacidad).** Salario real erosionado (BCP/Banco Mundial, cálculo propio) y precarización → huelga y renuncias → menor capacidad operativa incluso con insumos (Sinamed (reclamo), MEF y prensa (2026), MEF y prensa (2026)).
+3. **Circuito de control/logística.** Hallazgos de auditoría (licitaciones, vencidos, stock no confiable, territorio) muestran que **aún con dinero**, los mecanismos de compra, almacenamiento y distribución pierden parte del gasto (Contraloría–MSPBS). El concepto "del guaraní al paciente" cuantifica esa pérdida en el próximo apartado.
+
+**Matiz de interpretación.** Las denuncias documentadas de **uso político de la gestión sanitaria** (casos San Ignacio, programa asistencial en seccionales de la ANR, intermediación por camas) (Fiscalía y prensa (2026), Denuncia con fuente (2026), Declaración de la ANR (2026), Prensa (2026), Declaraciones públicas (2026)) se registran **como denuncias/hechos declarados**, no como condenas ni como desvío probado de medicamentos; el desvío específico a seccionales para campañas generales **no está confirmado judicialmente** (sin evidencia, sin evidencia — rechazado como afirmación de existencia).
+
+---
+
+## 5. Rastreador PGN Salud 2027 y "Del guaraní al paciente"
+
+**Cadena de seguimiento (12 eslabones, fórmula `t_n = P_n / P_{n-1}`):**
+
+```
+P0 Presupuesto aprobado → P1 Crédito vigente → P2 Plan financiero → P3 Licitación
+→ P4 Adjudicación → P5 Contrato → P6 Entrega recibida → P7 Pago (obligado/pagado)
+→ P8 Stock (SICIAP) → P9 Distribución por establecimiento → P10 Dispensa al paciente → [Resultado]
+```
+
+**Indicadores financieros (módulo Deuda):** `compras_mensuales` vs `pagos_mensuales` → **arrastre = deuda flotante** (P5−P7 acumulado). **Indicadores de control (módulo Medicamentos):** `t_6` (recibido/adjudicado), `t_8` (inventario/recibido), `t_9` (distribuido), `t_10` (dispensado), `vencidos`.
+
+**Indicador experimental "Del guaraní al paciente":**
+
+> `G→P = (valor de medicamentos/insumos efectivamente dispuestos al paciente) ÷ (gasto ejecutado en compras)`
+
+Con las reglas anti-conclusiones-falsas del protocolo: mide llegada de insumos (no calidad clínica) sin datos de dispensación (SICIAP no confiable) se reporta parcial (hasta `t_9`) y etiquetado como **experimental**. El estado actual del sistema (SICIAP/MSPBS) implica que hoy **no es posible computar `t_10` con datos confiables** — dato en sí mismo diagnóstico.
+
+---
+
+## 6. Benchmark internacional (síntesis)
+
+| Indicador | Paraguay (2023) | LAC | OCDE |
+|---|---|---|---|
+| Gasto salud % PIB | 8,36% | 7,94% | 9,2% |
+| Per cápita (PPP) | ~1.469 | 1.697,8 | ~5.000 |
+| Gasto público doméstico % | ~55% | 50,9% | ~74–75% |
+| **Gasto de bolsillo (OOP) %** | **36,3%** | 29,7% | ~19% |
+| Médicos /1.000 | 3,9 | 2,6 | ~3,7 |
+| UHC 3.8.1 | 79 | — | — |
+
+**Lectura:** Paraguay gasta en la banda regional, pero con **protección financiera muy débil** (OOP casi el doble que OCDE) y **remuneración médica relativa muy baja** (≈0,3–0,5× PIB per cápita mensual vs 2–6× el salario medio en OCDE — OCDE y estimación propia, OCDE (2021-2023)). No es, en primera instancia, un problema de monto agregado. En gobernanza, la **OCDE (2018)** publicó una revisión específica de la gobernanza pública de Paraguay y Freedom House (2018) la clasificó "Partly Free" (64/100), con debilidad del control anticorrupción (OCDE y Freedom House).
+
+---
+
+## 7. Conclusiones y preguntas abiertas
+
+### Conclusiones
+1. El aumento del PGN 2027 a **Gs. 18,17 billones** (proyecto) es real y significativo, pero **el dinero nuevo se etiqueta mayoritariamente a insumos** y no a salarios ni a la deuda vieja (Proyecto de Ley PGN 2027, MEF y prensa (2026), MEF (31/08/2026), MEF (nota 31/08/2026)).
+2. La crisis tiene **tres motores** que el solo presupuesto no apaga: deuda estructural con proveedores, salario real erosionado/conflicto laboral, y debilidades de control/logística documentadas por la Contraloría.
+3. El flanco más débil del sistema frente a la región/OCDE es la **protección financiera** (OOP 36,3%) y la **remuneración relativa** — no el monto total presupuestado.
+4. La evidencia respalda un escenario probable de **mejora parcial y desigual** en 2027, no una normalización completa: mejor abastecimiento en áreas priorizadas, con persistencia de deuda, escasez focalizada y conflicto laboral.
+
+### Preguntas abiertas (del marco de contexto, reorientadas a datos verificables)
+1. ¿Cuál es la **ejecución real** del presupuesto de Salud 2016–2027 (devengado vs asignado)?
+2. ¿Qué proporción del gasto ejecutado corresponde a salarios, insumos, infraestructura y transferencias **cada año**?
+3. ¿Cómo evolucionó la **deuda farmacéutica del MSPyBS por año** con fuente oficial (informes CGR/MEF)?
+4. ¿Cuántas **observaciones de la Contraloría** terminaron en sanciones/consecuencias?
+5. ¿Qué proveedores concentran los contratos y **qué proporción se dirime por vía de excepción o amparo**?
+6. ¿Los **amparos** y el gasto de bolsillo caerán conforme al nuevo financiamiento de insumos?
+7. ¿Cómo varía la **ejecución territorial** entre departamentos (p. ej. Alto Paraguay)?
+8. ¿La **cesión de deuda (36 meses)** y el factoraje reducen o solo difieren el problema?
+9. ¿Los **nombramientos** (2.390/1.644) y la carrera sanitaria reducen la precarización?
+10. ¿El **SICIAP** se corrige para reflejar el stock real (condición para el indicador `G→P`)?
+11. ¿El **vencimiento de medicamentos** se reduce con la nueva trazabilidad?
+12. ¿Se **reduce el gasto de bolsillo** (36,3%) con la compra adicional de 2027?
+13. ¿El nuevo presupuesto **reduce la deuda fabril o financia más compras** (P5−P7)?
+14. ¿Qué hospitales mejoran más en 2027 y cuáles permanecen rezagados?
+15. ¿Qué parte de la mejora se explica por más dinero y qué parte por **cambios de gestión**?
+
+---
+
+## 8. Anexos
+
+- **Anexo A — sistema de evidencia.** `el sistema de evidencia del proyecto` (132 afirmaciones; 122 verificadas, 3 rechazadas, 7 sin resolver).
+- **Anexo B — Fact-check.** `las actas de verificacióndocumentos de trabajo.md` (+ `documentos de trabajo.md`, `documentos de trabajo.md`, `documentos de trabajo.md`, `documentos de trabajo.md`, `documentos de trabajo.md`).
+- **Anexo C — Hallazgos por módulo.** `los informes temáticosdocumentos de trabajo…f6_*.md`, `el marco analítico`, `la serie de presupuesto`, `el análisis salarial`, `el análisis de la deuda`, `el análisis de medicamentos`, `el análisis comparativo`.
+- **Anexo D — Documentos fuente.** Leyes de Presupuesto 2016–2025 (``), Mensaje del Proyecto (OCR), Proyecto de Ley PGN 2027 (Ley PGN 2027 (MEF)), Ley 7.609/2025 (Ley 7.609/2025 (PGN 2026)), Programación de Gastos del MSPyBS (Programación de Gastos del MSPBS (2027)), informes OMS/OCDE/BM/FMI citados en los findings.
+
+> **Advertencia metodológica final.** Este informe cita únicamente afirmaciones con estado verificadas. Las cifras de declaración (cámaras, gremios, ministros) están etiquetadas como tales y no deben tratarse como dato oficial. Un hallazgo de auditoría, una denuncia o una imputación no constituyen condena.</script>
+</section>
+
+<section class="sec">
+  <span class="sup">fuentes</span>
+  <h2>Documentos oficiales usados</h2>
+  <ul id="fuentes"></ul>
+</section>
+</main>
+
+<footer><div class="wrap">
+Proyecto de Ley PGN 2027 (aún no sancionado) · Datos: Ministerio de Economía y Finanzas del Paraguay ·
+Generado 2026-09 · Última actualización de datos: 4 de septiembre de 2026 · Visualización educativa, no oficial. Cada cifra cita su fuente y página.
+Enlaces institucionales: <a href="https://www.mef.gov.py/es/pgn-2027" target="_blank" rel="noopener">MEF — PGN 2027</a> · <a href="https://www.mspbs.gov.py/" target="_blank" rel="noopener">MSPBS</a> · <a href="https://www.contraloria.gov.py/" target="_blank" rel="noopener">Contraloría</a> · <a href="https://www.bcp.gov.py/" target="_blank" rel="noopener">BCP</a>
+</div></footer>
+
+<script> window.PGN27 = {"meta": {"nombre": "Presupuesto General de la Nación 2027 — Paraguay (proyecto)", "generado": "2026-09-04", "org": "Ministerio de Economía y Finanzas del Paraguay", "licencia": "Datos públicos de fuente oficial (MEF). Uso libre con atribución y cita de fuente+página.", "nota": "Monto total de la Ley (D01 p.1) verificable; detalles por programa de Salud de D20 (incluye partidas no asignables)."}, "macro": [["Total PGN 2027", "166,322,078,980,116", "Gs.", "D01, pág. 1"], ["Total PGN 2026 (Ley 7609/2025)", "149,613,679,046,612", "Gs.", "D18, pág. 1"], ["Variación nominal", "+11,2%", "%", "derivado D01/D18, pág. 1"], ["PGN como % del PIB (proy.)", "~38,4%", "%", "derivado D01/D02, pág. 6"], ["PIB real 2027 (proy.)", "+4,2%", "%", "D02, pág. 6"], ["Inflación 2027 (proy.)", "3,5%", "%", "D02, pág. 6"], ["Déficit tope propuesto 2027", "3,9% del PIB", "% PIB", "D01, pág. 36"], ["Deuda pública (jun-2026)", "US$ 21.947 M (34,4% del PIB)", "US$", "D02, pág. 5"], ["Tipo de cambio proyectado 2027", "Gs. 6.458/US$", "Gs/US$", "D02, pág. 6 (OCR)"]], "economia": [{"categoria": "Gastos corrientes", "gs": 101027598824879, "pct": 60.7, "fuente": "D01 (p.7-8)"}, {"categoria": "Gastos de capital", "gs": 57514436088858, "pct": 34.6, "fuente": "D01 (p.7-8)"}, {"categoria": "Aplicaciones financieras (deuda)", "gs": 7780044066379, "pct": 4.7, "fuente": "D01 (p.7-8)"}], "instituciones_2027": [{"nombre": "Ministerio de Economía y Finanzas", "gs_2027": 24966321986841, "pct": 15.01, "fuente": "D01", "pagina": "7"}, {"nombre": "Ministerio de Salud Pública y Bienestar Social", "gs_2027": 18168392998474, "pct": 10.92, "fuente": "D01", "pagina": "8"}, {"nombre": "Ministerio de Educación y Ciencias", "gs_2027": 10450207042878, "pct": 6.28, "fuente": "D01", "pagina": "8"}, {"nombre": "Ministerio de Obras Públicas y Comunicaciones", "gs_2027": 9202327126231, "pct": 5.53, "fuente": "D01", "pagina": "8"}, {"nombre": "Ministerio de Desarrollo Social", "gs_2027": 5623748612337, "pct": 3.38, "fuente": "D01", "pagina": "8"}, {"nombre": "Ministerio del Interior", "gs_2027": 5504384635596, "pct": 3.31, "fuente": "D01", "pagina": "7"}, {"nombre": "Poder Judicial y organismos auxiliares", "gs_2027": 4252841465355, "pct": 2.56, "fuente": "D01", "pagina": "8"}, {"nombre": "Ministerio de Defensa Nacional", "gs_2027": 3148989697897, "pct": 1.89, "fuente": "D01", "pagina": "7"}, {"nombre": "Gobiernos Departamentales", "gs_2027": 2818771895861, "pct": 1.69, "fuente": "D01", "pagina": "8"}, {"nombre": "Presidencia de la República", "gs_2027": 1113526766687, "pct": 0.67, "fuente": "D01", "pagina": "7"}], "areas": [{"area": "Salud", "instituciones": "MSPyBS", "gs": 18168392998474, "pct": 10.9, "fuente": "D01", "pagina": "8"}, {"area": "Educación", "instituciones": "MEC", "gs": 10450207042878, "pct": 6.3, "fuente": "D01", "pagina": "8"}, {"area": "Infraestructura", "instituciones": "MOPC", "gs": 9202327126231, "pct": 5.5, "fuente": "D01", "pagina": "8"}, {"area": "Seguridad", "instituciones": "Interior + Defensa Nacional", "gs": 8653374333493, "pct": 5.2, "fuente": "D01", "pagina": "7"}, {"area": "Protección social", "instituciones": "Desarrollo Social + MINNA", "gs": 5781949321304, "pct": 3.5, "fuente": "D01", "pagina": "8"}], "variaciones": [{"nombre": "Ministerio de Economía y Finanzas", "gs_2026": 25177656655343, "gs_2027": 24966321986841, "delta_gs": -211334668502, "delta_pct": -0.8, "fuente": "Ley 7.609/2025 y Ley PGN 2027"}, {"nombre": "Ministerio de Salud Pública y Bienestar Social", "gs_2026": 10264915884361, "gs_2027": 18168392998474, "delta_gs": 7903477114113, "delta_pct": 77.0, "fuente": "Ley 7.609/2025 y Ley PGN 2027"}, {"nombre": "Ministerio de Educación y Ciencias", "gs_2026": 10393441969514, "gs_2027": 10450207042878, "delta_gs": 56765073364, "delta_pct": 0.5, "fuente": "Ley 7.609/2025 y Ley PGN 2027"}, {"nombre": "Ministerio de Obras Públicas y Comunicaciones", "gs_2026": 6855588246134, "gs_2027": 9202327126231, "delta_gs": 2346738880097, "delta_pct": 34.2, "fuente": "Ley 7.609/2025 y Ley PGN 2027"}, {"nombre": "Ministerio de Desarrollo Social", "gs_2026": 4959138624193, "gs_2027": 5623748612337, "delta_gs": 664609988144, "delta_pct": 13.4, "fuente": "Ley 7.609/2025 y Ley PGN 2027"}, {"nombre": "Ministerio del Interior", "gs_2026": 4640578367695, "gs_2027": 5504384635596, "delta_gs": 863806267901, "delta_pct": 18.6, "fuente": "Ley 7.609/2025 y Ley PGN 2027"}, {"nombre": "Poder Judicial y organismos auxiliares", "gs_2026": 3985023518134, "gs_2027": 4252841465355, "delta_gs": 267817947221, "delta_pct": 6.7, "fuente": "Ley 7.609/2025 y Ley PGN 2027"}, {"nombre": "Ministerio de Defensa Nacional", "gs_2026": 2760773668569, "gs_2027": 3148989697897, "delta_gs": 388216029328, "delta_pct": 14.1, "fuente": "Ley 7.609/2025 y Ley PGN 2027"}, {"nombre": "Gobiernos Departamentales", "gs_2026": 2625941087663, "gs_2027": 2818771895861, "delta_gs": 192830808198, "delta_pct": 7.3, "fuente": "Ley 7.609/2025 y Ley PGN 2027"}, {"nombre": "Presidencia de la República", "gs_2026": 1077761933621, "gs_2027": 1113526766687, "delta_gs": 35764833066, "delta_pct": 3.3, "fuente": "Ley 7.609/2025 y Ley PGN 2027"}], "estructura": {"admin_central": 87905852469505, "entes_descentralizados": 78416226510611, "pct_ac": 52.9, "pct_ed": 47.1}, "salud": {"total_gs": 18175144157820, "total_ley_gs": 18168392998474, "gs_2026": 10264915884361, "serie": {"anios": ["2025", "2026", "2027"], "billones": [9.7, 10.26, 18.17], "nota": "Serie limitada a los años con dato verificado (2018–2024 quedan pendientes de OCR de las Leyes escaneadas — ver informe). 2027 = proyecto, aún no sancionado."}, "nota": "El total de la Programación de Gastos (D20) incluye Gs. 6.751 millones de 'partidas no asignables a programas'; la Ley (D01) reporta Gs. 18.168.392.998.474 sin ellas. Crecimiento 2027 vs 2026: +77,0% (+Gs. 7.903,5 millones).", "diccionario": {"Programa Central (gestión y administración)": "El andamiaje del ministerio: dirección, gestión administrativa y funcionamiento institucional.", "Acceso a la Atención Primaria de la Salud (APS/USF)": "La salud de puerta de entrada: unidades de salud de la familia (USF), centros de salud y prevención en la comunidad.", "Servicios Hospitalarios (reducción morbimortalidad)": "Hospitales públicos: internación, urgencias, cirugías y atención de complejidad.", "Servicios de Apoyo y Diagnóstico": "Lo que ayuda a diagnosticar y tratar: laboratorios, imágenes (radiología, ecografías) y servicios de apoyo clínico.", "Atención a Enfermedades Especiales": "Atención a pacientes con enfermedades especiales, incluidas las de alto costo.", "Seguridad Alimentaria Nutricional": "Combate a la desnutrición: programas de nutrición y seguridad alimentaria.", "Bienestar Social de personas en riesgo": "Apoyo a personas en situación de riesgo y vulnerabilidad social.", "Acceso a Agua Potable y Saneamiento": "Mejora del acceso a agua potable y a servicios de saneamiento.", "Partidas no asignables a programas": "Montos que no se reparten entre programas (ajustes del presupuesto); la Ley los contabiliza aparte."}, "programas": [{"codigo": "001", "programa": "Programa Central (gestión y administración)", "monto_gs": 2962614270292, "pct": 16.3, "fuente": "D20", "pagina": "1/16/53/58/62/63/65/69"}, {"codigo": "001", "programa": "Acceso a la Atención Primaria de la Salud (APS/USF)", "monto_gs": 434323559167, "pct": 2.39, "fuente": "D20", "pagina": "1/16/53/58/62/63/65/69"}, {"codigo": "002", "programa": "Servicios Hospitalarios (reducción morbimortalidad)", "monto_gs": 5066104645214, "pct": 27.87, "fuente": "D20", "pagina": "1/16/53/58/62/63/65/69"}, {"codigo": "003", "programa": "Servicios de Apoyo y Diagnóstico", "monto_gs": 9301248614450, "pct": 51.18, "fuente": "D20", "pagina": "1/16/53/58/62/63/65/69"}, {"codigo": "004", "programa": "Atención a Enfermedades Especiales", "monto_gs": 59045954398, "pct": 0.32, "fuente": "D20", "pagina": "1/16/53/58/62/63/65/69"}, {"codigo": "005", "programa": "Seguridad Alimentaria Nutricional", "monto_gs": 176778234291, "pct": 0.97, "fuente": "D20", "pagina": "1/16/53/58/62/63/65/69"}, {"codigo": "006", "programa": "Bienestar Social de personas en riesgo", "monto_gs": 36054733461, "pct": 0.2, "fuente": "D20", "pagina": "1/16/53/58/62/63/65/69"}, {"codigo": "007", "programa": "Acceso a Agua Potable y Saneamiento", "monto_gs": 132222987201, "pct": 0.73, "fuente": "D20", "pagina": "1/16/53/58/62/63/65/69"}, {"codigo": "---", "programa": "Partidas no asignables a programas", "monto_gs": 6751159346, "pct": 0.04, "fuente": "D20", "pagina": "1/16/53/58/62/63/65/69"}]}, "fuentes": [{"id": "D01", "nombre": "Proyecto de Ley PGN 2027", "url": "https://www.mef.gov.py/sites/default/files/2026-09/Proyecto_PGN_2027.pdf"}, {"id": "D02", "nombre": "Mensaje del Proyecto PGN 2027", "url": "https://www.mef.gov.py/sites/default/files/2026-09/MENSAJE.pdf"}, {"id": "D03", "nombre": "Clasificador Presupuestario PGN 2027", "url": "https://www.mef.gov.py/sites/default/files/2026-09/CLASIFICADOR%20PRESUPUESTARIO%20PGN%202027.pdf"}, {"id": "D17", "nombre": "Proyecto de Ley PGN 2026", "url": "https://www.mef.gov.py/sites/default/files/2025-08/PROYECTO%20DE%20LEY%20PGN%202026-2.pdf"}, {"id": "D18", "nombre": "Ley N° 7609/2025 (PGN 2026 sancionado)", "url": "https://www.mef.gov.py/sites/default/files/2026-01/LEY_7609_PGN_2026_OCR.pdf"}, {"id": "D19", "nombre": "PPR del MSPyBS (12.8)", "url": "https://www.mef.gov.py/sites/default/files/2026-09/12.8%20Ministerio%20de%20Salud%20P%C3%BAblica%20y%20Bienestar%20Social.pdf"}, {"id": "D20", "nombre": "Programación de Gastos del MSPyBS (12.8)", "url": "https://www.mef.gov.py/sites/default/files/2026-09/12.8%20Ministerio%20de%20Salud%20P%C3%BAblica%20y%20Bienestar%20Social_3.pdf"}]}; </script>
+<script> window.CRISIS = {"deuda": {"periodos": ["2022", "ago-2025", "ene-2026", "abr-2026", "ago-2026", "sep-2026"], "usd_m": [150, 663, 814, 1220, 1000, 600], "nota": "150M (2022); MSPBS 340M + IPS 323M (ago-2025) ≈663; 814M 'validada por MSPBS' (ene-26); rango FMI/MEF abr-26 ≈1.220 total (~1.000 farma); ~1.000 (ago-26, total Estado, CRIPFA); saldo ~600 (sep-26, tras cesión USD 320M). Varias cifras son estimaciones (MEF, FMI y cámaras del sector)."}, "oop": {"py": 36.3, "lac": 29.7, "oecd": 19.0, "fuente": "Banco Mundial/OCDE (2023)"}, "pib": {"py": 8.36, "lac": 7.94, "oecd": 9.2, "fuente": "Banco Mundial/OCDE (2022-2023)"}, "salario": {"infl_acum": 105, "poder_compra": 49, "base_m": 5, "reclamo_m": 8, "fuente": "Ley 7.137/2023 · Sinamed · BCP (serie)"}, "cards": [["Deuda con farmacéuticas (2026)", "≈ USD 1.000-1.220 M", "FMI, Artículo IV (2026)"], ["Ítems en stock crítico", "72,6% doc. interno (1.453/2.001) · oficial 15,4%", "Documento interno del MSPBS"], ["Amparos judiciales", "120 en 15 días (ene-2026), ~100% oncológicos", "Defensor del Pueblo (ene-2026)"], ["Gasto de bolsillo", "36,3% (2023) ≈ 2× promedio OCDE", "Banco Mundial (2023)"], ["Ejecución presupuestaria (jul-2025)", "Gs. 4.824 mil millones (47,9% del año)", "MEF/DGP (jul-2025)"], ["Abastecimiento territorial (2026)", "Alto Paraguay Gs. 467,2 M · Pte. Hayes Gs. 697,3 M", "MSPBS (2026)"]], "timeline": [["24-28 ago 2026", "Huelga nacional de médicos (Sinamed) sin acuerdo (contexto)"], ["31 ago 2026", "Renuncias masivas; afectación en Acosta Ñu, Trauma e Itauguá (contexto)"], ["01 sep 2026", "PGN 2027: +77% en Ejecutivo→Salud; USD 760M a insumos; sin reajuste salarial general (MEF)"], ["sep 2026", "Concurso de desprecarización: 1.644 médicos elegibles (MSPBS)"], ["sep 2026", "Cesión de deuda por USD 320M; saldo ≈600M (MEF)"]], "nota": "Todas las cifras provienen de afirmaciones verificadas del Registro de Evidencia del proyecto (122 de 132 verificadas; cierre 2026-09-04). Enlace al informe completo en la pestaña «Informe técnico».", "glosario": [["OCDE", "Un club de 38 países ricos (Estados Unidos, España, Chile…) con el que nos comparamos para saber si Paraguay está bien o mal."], ["Gasto de bolsillo (OOP)", "La plata que paga la persona en la farmacia o clínica, cuando el Estado o el seguro no cubren."], ["PIB", "El valor de todo lo que produce el país en un año."], ["FMI / Fondo Monetario Internacional", "Organismo internacional que revisa una vez al año las cuentas públicas del país."], ["Amparo", "Un juicio rápido que pide un paciente para que el Estado le dé sí o sí un medicamento."], ["Vínculo laboral de 12 horas", "El formato de contrato de los médicos del sistema público: 12 horas semanales por un sueldo."], ["Billones de guaraníes", "Gs. 1 billón = un millón de millones: mucho más de lo que gana una familia en toda su vida."], ["Stock cero / stock crítico", "Medicamentos agotados o a punto de agotarse en el depósito."], ["Desprecarización", "Pasar a un contratado (temporal) a funcionario de planta, con estabilidad laboral."], ["Cesión de deuda (factoraje)", "El Estado cede a una financiera la deuda que tiene con los laboratorios para que estos cobren antes."], ["UHC / índice 3.8.1", "Índice de la ONU que mide cuántos de los servicios esenciales de salud llegan a la gente (escala de 0 a 100)."], ["PPP (paridad de poder de compra)", "Forma de comparar precios entre países ajustando por cuánto cuesta vivir en cada uno."]]}; </script>
+<script> window.SRC = {"D01": "Ley PGN 2027 (MEF)", "D02": "Mensaje del Proyecto (MEF)", "D03": "Clasificador PGN 2027", "D08": "Ley 7.609/2025 (PGN 2026)", "D17": "Proyecto de Ley PGN 2026", "D18": "Ley 7.609/2025 (PGN 2026)", "D19": "PPR del MSPBS (2027)", "D20": "Programación de Gastos del MSPBS (2027)", "E01": "Ley PGN 2027", "E02": "Proyecto de Ley PGN 2027", "E08": "Declaraciones Gobierno/Sinamed (2026)", "E17": "MSPBS (provisión territorial 2026)", "E19": "Fiscalía y prensa (2026)", "E20": "sin evidencia", "E21": "Denuncia con fuente (2026)", "E22": "Declaración de la ANR (2026)", "E33": "OCDE y Freedom House", "E34": "CGR — Informe Financiero del IPS", "E37": "MSPBS/DINAVISA (Imedic)", "E38": "Justicia — sentencia firme (camas Imedic)", "E66": "Prensa (2026)", "E67": "Declaraciones públicas (2026)", "E70": "sin evidencia", "E74": "OMS/Banco Mundial (2025)", "E76": "OMS/Banco Mundial (2022)", "E79": "Ley 5.554/2016", "E80": "Ley 5.554/2016 (prorrogada)", "E88": "Ley 7.408/2024", "E89": "Ley 7.609/2025", "E90": "Proyecto de Ley PGN 2027", "E91": "MEF/DGP (ejecución 2025)", "E92": "Ley 7.609/2025 (desglose 2026)", "E93": "Ley 7.137/2023", "E94": "Sinamed (reclamo)", "E95": "BCP/Banco Mundial", "E96": "cálculo propio", "E97": "Declaraciones Gobierno/Sinamed", "E98": "MSPBS (concurso 2026)", "E99": "MEF y prensa (2026)", "E100": "MEF y prensa (2026)", "E101": "OCDE y estimación propia", "E102": "Ley 6.586/2020", "E103": "MEF y cámaras farmacéuticas", "E104": "FMI, Artículo IV (2026)", "E105": "CRIPFA (declaración)", "E106": "MEF (cesión 2026)", "E107": "MEF (31/08/2026)", "E108": "FMI/MEF", "E110": "MSPBS y prensa (2026)", "E111": "MEF (nota 31/08/2026)", "E112": "Mensaje del Proyecto (2027)", "E113": "Contraloría", "E114": "Contraloría", "E115": "Contraloría", "E116": "SICIAP/MSPBS", "E117": "MSPBS", "Documento interno del MSPBS": "Documento interno del MSPBS", "E119": "Defensor del Pueblo", "Banco Mundial (2023)": "Banco Mundial (2023)", "E121": "Ley 7.471/2025", "E122": "OMS (sin serie publicada) ", "E123": "Banco Mundial (2023)", "E124": "Banco Mundial (2023)", "E125": "Banco Mundial (2023)", "E126": "OMS (2023)", "E127": "OMS (2011)", "E128": "Banco Mundial/OMS (2022)", "E129": "OCDE (2021-2023)", "E130": "Banco Mundial/OPS (2023)", "E131": "Banco Mundial (2024)", "E132": "INE (EPHC)"}; </script>
+<script src="app.js"></script>
+</body>
+</html>

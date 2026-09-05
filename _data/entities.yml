@@ -1,0 +1,240 @@
+# Entidades clave del Observatorio de IA en Paraguay
+# Lista curada manualmente. build_entities.py escanea _posts/ para
+# encontrar articulos relacionados y regenera las paginas de entidad.
+#
+# Los textos DEBEN usar acentos y caracteres del espanol correctamente.
+
+- slug: mitic
+  name: MITIC
+  name_full: Ministerio de Tecnologías de la Información y Comunicación
+  description: >
+    Creado en 2018, el MITIC es el ministerio responsable de la política digital
+    de Paraguay. Administra la identidad electrónica (1.5M+ usuarios), los 480+
+    trámites digitales del portal Paraguay.gov.py, y la infraestructura de datos
+    del Estado. Es la contraparte del BID en la Agenda Digital y lidera la
+    consulta pública para la Estrategia Nacional de IA.
+  category: gobierno
+  featured: true
+  related_laws:
+    - "Ley 6822/2022 — servicios de confianza electrónica"
+    - "Ley 7593/2025 — protección de datos personales"
+
+- slug: ande
+  name: ANDE
+  name_full: Administración Nacional de Electricidad
+  description: >
+    La ANDE es la empresa estatal de electricidad de Paraguay. Opera 16.000 MW
+    de capacidad instalada (Itaipú, Yacyretá, Acaray) con la tarifa industrial
+    más baja de Sudamérica (0.03-0.05 USD/kWh). Es el actor central en la apertura
+    del sector eléctrico (Ley 7599/2025, Decreto 6034) y el principal proveedor
+    de energía para data centers y criptominería.
+  category: infraestructura
+  featured: true
+  datos_url: "https://datospublicos.muchotexto.net/energia.html"
+  datos_desc: "75 indicadores del sistema eléctrico paraguayo: consumo, demanda, pérdidas, clientes y tarifas"
+  related_laws:
+    - "Ley 7599/2025 y Decreto 6034/2026 — apertura del sector eléctrico al sector privado"
+    - "Ley 7547/2025 — reforma de la Ley de Maquila, incluye servicios intangibles"
+    - "Tarifa de Itaipú 2024-2026 — USD 19.28/kW-mes, venta de excedente al mercado brasileño"
+    - "Anexo C del Tratado de Itaipú — vence 1 de enero de 2027"
+
+- slug: itaipu
+  name: Itaipú
+  name_full: Itaipú Binacional
+  description: >
+    La hidroeléctrica más grande del mundo en generación acumulada, operada por
+    Paraguay y Brasil desde 1973. Genera 14.000 MW; Paraguay consume ~20% de su
+    mitad y vende el resto a Brasil. El Anexo C del tratado vence en enero 2027.
+    La energía de Itaipú alimenta los data centers de HIVE y es la ventaja
+    competitiva central de Paraguay en la economía de la IA.
+  category: infraestructura
+  featured: true
+  datos_url: "https://datospublicos.muchotexto.net/itaipu.html"
+  datos_desc: "135 indicadores (2000–2026): generación por sector 50/60 Hz y suministro a Paraguay y Brasil"
+  related_laws:
+    - "Anexo C del Tratado de Itaipú — vence 1 enero 2027"
+    - "Tarifa Itaipú 2024-2026 — USD 19.28/kW-mes"
+
+- slug: yacyreta
+  name: Yacyretá
+  name_full: Entidad Binacional Yacyretá
+  description: >
+    La Entidad Binacional Yacyretá (EBY), creada con Argentina en 1973, es la
+    segunda mayor hidroeléctrica de Paraguay. Aporta alrededor de 1.550 MW al
+    sistema paraguayo (18% de la capacidad instalada) y cerca del 11% de la
+    generación de la matriz. Junto con Itaipú concentra el 97% de la capacidad
+    hidroeléctrica del país en la cuenca del Paraná. Su serie de generación
+    histórica se publica en MuchoTexto Data.
+  category: infraestructura
+  featured: true
+  datos_url: "https://datospublicos.muchotexto.net/yacyreta.html"
+  datos_desc: "Generación binacional Paraguay-Argentina: mensual EBY y agregada anual"
+  related_laws:
+    - "Tratado de Yacyretá (1973) — entidad binacional Paraguay-Argentina"
+
+- slug: yguazu-digital
+  name: Yguazú Digital
+  name_full: Proyecto Yguazú Digital
+  description: >
+    Proyecto binacional Paraguay-Taiwán para construir uno de los centros de datos
+    de IA más grandes del mundo. Tres fases: Fase I (10 MW, USD 200-500M), Fase II
+    (100 MW, ~USD 5B), Fase III (1 GW, ~USD 40B). El ICDF contactó a Google,
+    Microsoft y Amazon como posibles clientes. Es el ancla de la estrategia de
+    Paraguay como hub de IA.
+  category: infraestructura
+  featured: true
+
+- slug: taiwan
+  name: Taiwán
+  name_full: Taiwán (República de China)
+  description: >
+    Taiwán es el último aliado diplomático de Paraguay en Sudamérica y su socio
+    estratégico en tecnología. Fabrica el 90% de los semiconductores avanzados del
+    mundo (TSMC). Invierte en Paraguay a través del ICDF con becas, cooperación
+    técnica y el proyecto Yguazú Digital. En agosto 2026 el fabricante de memorias
+    ADATA (2º productor mundial de módulos DRAM) inició la prospección de una
+    planta de ensamblaje de memorias y SSDs en Minga Guazú bajo el régimen de
+    maquila (Ley 7547/2025). La relación Taiwán-Paraguay define la posición
+    geopolítica del país en la guerra fría tecnológica entre China y EE.UU.
+  category: geopolítica
+  featured: true
+
+- slug: cert-py
+  name: CERT-PY
+  name_full: Centro de Respuesta a Incidentes de Seguridad Informática de Paraguay
+  description: >
+    Centro nacional de respuesta a incidentes de ciberseguridad, operativo desde
+    2012 bajo el MITIC. Coordina la respuesta a ataques informáticos contra
+    infraestructura estatal. En 2024 hackers chinos infiltraron sistemas del
+    gobierno. En junio 2025 un ransomware paralizó 18 agencias estatales.
+  category: gobierno
+  related_laws:
+    - "Estrategia Nacional de Ciberseguridad 2025-2028 — Decreto 3900"
+
+- slug: hive-digital
+  name: HIVE Digital Technologies
+  name_full: HIVE Digital Technologies Ltd.
+  description: >
+    Empresa de infraestructura digital listada en NASDAQ (HIVE). Opera 300 MW en
+    Paraguay (200 MW Yguazú + 100 MW Valenzuela, fases completadas jun-nov 2025)
+    y construye 100 MW adicionales de cómputo GPU en Yguazú (energización: sept
+    2026). Plan total: 400 MW. Modelo dual: minería Bitcoin (93.5% revenue
+    FY2026) + HPC/AI cloud. Lanzó BUZZ AI Cloud en marzo 2026 en data center
+    Tier III en Asunción.
+  category: empresa
+
+- slug: starlink
+  name: Starlink
+  name_full: Starlink (SpaceX)
+  description: >
+    Servicio de internet satelital de SpaceX que opera en Paraguay desde 2023.
+    Más de 20.000 usuarios, 1.600 antenas instaladas en escuelas rurales,
+    50.000 estudiantes y docentes alcanzados. CONATEL autorizó a Starlink a
+    operar por encima de los límites de potencia de la UIT — Paraguay fue el
+    primer país del mundo en hacerlo.
+  category: empresa
+
+- slug: koga
+  name: KOGA Impact Lab
+  name_full: KOGA Impact Lab
+  description: >
+    Aceleradora y hub de innovación con más de 14 años operando en Paraguay.
+    Apoyó a 200+ startups y capacitó a 10.000+ emprendedores. Es el punto de
+    encuentro del ecosistema emprendedor tech en Paraguay y un actor clave en
+    la formación de talento para la economía digital.
+  category: comunidad
+
+- slug: x8cloud
+  name: X8 Cloud
+  name_full: X8 Cloud
+  description: >
+    Empresa con sede en Los Ángeles que anunció un plan de USD 10-50B a 30 años
+    para construir data centers de IA en Paraguay. Inició construcción en mayo
+    2026 con 50 MW iniciales. Uno de los primeros actores privados habilitados
+    por la apertura del sector eléctrico (Ley 7599, Decreto 6034).
+  category: empresa
+
+- slug: peter-thiel
+  name: Peter Thiel
+  name_full: Peter Thiel
+  description: >
+    Cofundador de PayPal, Palantir Technologies y Founders Fund. Se reunió con
+    el presidente Santiago Peña en Mburuvicha Róga en 2024, generando debate
+    sobre vigilancia, datos y soberanía digital en Paraguay. Su interés en el
+    país es un indicador del potencial geopolítico y económico de Paraguay en
+    la economía de la IA.
+  category: geopolítica
+
+- slug: santiago-pena
+  name: Santiago Peña
+  name_full: Santiago Peña Palacios
+  description: >
+    Presidente de Paraguay desde agosto 2023. Su gobierno impulsó la apertura
+    del sector eléctrico (Ley 7599, Decreto 6034), promovió el proyecto Yguazú
+    Digital con Taiwán, y recibió a Peter Thiel y a delegaciones de TSMC. Bajo
+    su administración, Paraguay se posiciona activamente como hub de IA en
+    Sudamérica.
+  category: gobierno
+
+- slug: bid
+  name: BID
+  name_full: Banco Interamericano de Desarrollo
+  description: >
+    Organismo multilateral que financió la Agenda Digital de Paraguay con un
+    préstamo de USD 130M (2019) y la Estrategia Nacional de Hidrógeno Verde
+    (2025). Socio financiero recurrente en infraestructura digital y energética
+    del país. El Data Center Estatal Tier III del MITIC también fue financiado
+    por el BID.
+  category: geopolítica
+
+- slug: tsmc
+  name: TSMC
+  name_full: Taiwan Semiconductor Manufacturing Company
+  description: >
+    El mayor fabricante de semiconductores del mundo. Produce más del 90% de
+    los chips avanzados utilizados en IA (NVIDIA H100, Apple M-series, etc.).
+    Aunque no fabrica en Paraguay, delegados de TSMC han participado en foros
+    bilaterales Paraguay-Taiwán. Su relación con Taiwán es clave para entender
+    la geopolítica de los chips.
+  category: geopolítica
+
+- slug: sopaia
+  name: SOPAIA
+  name_full: Sociedad Paraguaya de Inteligencia Artificial
+  description: >
+    Organización que reúne a profesionales, investigadores y entusiastas de la
+    IA en Paraguay. Promueve el desarrollo y la divulgación de la inteligencia
+    artificial en el país. Co-organiza IBERAMIA 2026, la 19ª Conferencia
+    Iberoamericana de Inteligencia Artificial a realizarse en Asunción.
+  category: comunidad
+
+- slug: pti-py
+  name: PTI-PY
+  name_full: Parque Tecnológico Itaipú Paraguay
+  description: >
+    Centro de investigación y desarrollo tecnológico vinculado a Itaipú
+    Binacional. Opera la única unidad experimental de hidrógeno verde del
+    Paraguay (2 Nm³/h). Desarrolla proyectos de innovación en energía,
+    automatización y tecnología aplicada. Actor clave en la transición
+    energética y la diversificación tecnológica del país.
+  category: academia
+
+- slug: universidad-nacional
+  name: UNA
+  name_full: Universidad Nacional de Asunción
+  description: >
+    La universidad más grande de Paraguay, fundada en 1889. Sus facultades de
+    Ingeniería y Politécnica forman parte de los ~400 graduados anuales en
+    informática. Co-organiza IBERAMIA 2026 junto a UCA, UCOM y SOPAIA.
+    Representa la capacidad de formación de talento tech del país.
+  category: academia
+
+- slug: amcham
+  name: AmCham Paraguay
+  name_full: Cámara de Comercio Paraguayo-Americana
+  description: >
+    Cámara binacional que impulsó foros internacionales para posicionar a
+    Paraguay como hub de data centers, energía limpia e IA. Organizó el foro
+    en Silicon Valley (junio 2026) con el MIC, conectando el ecosistema tech
+    paraguayo con inversores y empresas estadounidenses.
+  category: comunidad

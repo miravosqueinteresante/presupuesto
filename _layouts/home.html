@@ -1,0 +1,201 @@
+---
+layout: default
+---
+
+{{ content }}
+
+{% assign articulos = site.posts | where_exp: "p","p.categories contains 'articulos'" %}
+{% assign total_analisis = articulos.size | minus: 2 %}
+{% assign ultimos_articulos = articulos | slice: 0, 3 %}
+{% assign ultimo_pulso = site.posts | where_exp: "p","p.categories contains 'pulso-paraguay'" | first %}
+{% assign ultima_editorial = site.posts | where_exp: "p","p.categories contains 'editorial'" | first %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://muchotexto.net/#website",
+    "name": "MuchoTexto",
+    "url": "https://muchotexto.net",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://muchotexto.net/buscar/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://muchotexto.net/#collection",
+  "name": "Observatorio de IA en Paraguay",
+  "description": "{{ total_analisis }} análisis en profundidad sobre IA, energía y geopolítica en Paraguay.",
+  "url": "https://muchotexto.net",
+  "about": { "@id": "https://muchotexto.net/ia-en-paraguay/" },
+  "mainEntity": { "@id": "https://muchotexto.net/ia-en-paraguay/" },
+  "publisher": { "@id": "https://muchotexto.net/#org" }
+}
+</script>
+
+<section class="hero-observatorio">
+  <p class="hero-eyebrow">Observatorio de IA en Paraguay</p>
+  <h1 class="hero-title">IA, energía y geopolítica en Paraguay.<br>Leídos con datos.</h1>
+  <p class="hero-desc">Analizamos cómo la inteligencia artificial está transformando el país — desde las tarifas de ANDE hasta los acuerdos sobre Itaipú — con cada cifra respaldada por <strong>fuentes abiertas y verificables, e investigaciones a fondo</strong>.<br>Cada análisis presenta argumentos a favor y en contra.</p>
+  <div class="hero-pillars">
+    <a href="{{ '/ia-en-paraguay/#infraestructura-y-energia' | relative_url }}">Infraestructura y energía</a>
+    <a href="{{ '/ia-en-paraguay/#geopolítica-y-regulación-tech' | relative_url }}">Geopolítica</a>
+    <a href="{{ '/ia-en-paraguay/#ia-sociedad-y-trabajo' | relative_url }}">Sociedad y trabajo</a>
+    <a href="{{ '/ia-en-paraguay/#tecnología-aplicada-y-ecosistema' | relative_url }}">Ecosistema</a>
+    <a href="{{ '/ia-en-paraguay/#cultura-filosofía-y-futuro' | relative_url }}">Cultura y futuro</a>
+  </div>
+  <a class="hero-cta" href="{{ '/ia-en-paraguay/' | relative_url }}">Explorar el Observatorio &rarr;</a>
+</section>
+
+<section class="home-section">
+  <h2 class="home-section-title">Últimos análisis</h2>
+  <div class="analysis-grid">
+    {% for post in ultimos_articulos %}
+      <a class="analysis-card" href="{{ post.url | relative_url }}">
+        <span class="badge badge-articulo">Artículo</span>
+        <h3>{{ post.title }}</h3>
+        <p class="analysis-meta">
+          {% assign sector = post.tags | first %}
+          {% case sector %}
+            {% when 'infraestructura-energia' %}Infraestructura y energía
+            {% when 'geopolitica-regulacion' %}Geopolítica y regulación
+            {% when 'sociedad-trabajo' %}Sociedad y trabajo
+            {% when 'tech-ecosistema' %}Tecnología y ecosistema
+            {% when 'cultura-filosofia' %}Cultura y filosofía
+            {% when 'ia-paraguay' %}IA en Paraguay
+            {% when 'analisis-ia' %}Análisis de IA
+            {% when 'paraguay-futuro' %}Paraguay futuro
+            {% else %}{{ sector | capitalize }}
+          {% endcase %}
+          &middot; {{ post.date | date: "%-d %b %Y" }}
+        </p>
+        <p class="analysis-desc">{% if post.description %}{{ post.description | strip_html }}{% endif %}</p>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="home-section">
+  <h2 class="home-section-title">Herramientas interactivas</h2>
+  <div class="tools-grid">
+    <a class="tool-card" href="{{ '/simulador-2040/' | relative_url }}">
+      <span class="tool-card-icon">&#9881;</span>
+      <span class="tool-card-title">Simulador Paraguay 2040</span>
+      <span class="tool-card-desc">Cinco palancas, dos shocks. Mov&eacute; los sliders y descubr&iacute; qu&eacute; futuro se construye.</span>
+      <span class="tool-card-cta">Probar simulador &rarr;</span>
+    </a>
+    <a class="tool-card" href="{{ '/calculadora-energetica/' | relative_url }}">
+      <span class="tool-card-icon">&#9889;</span>
+      <span class="tool-card-title">Calculadora de costo energ&eacute;tico</span>
+      <span class="tool-card-desc">Compar&aacute; el costo de electricidad para data centers en Paraguay vs. Irlanda, Virginia, Suecia y Chile.</span>
+      <span class="tool-card-cta">Abrir calculadora &rarr;</span>
+    </a>
+    <a class="tool-card" href="{{ '/radar-legislativo/' | relative_url }}">
+      <span class="tool-card-icon">&#9745;</span>
+      <span class="tool-card-title">Radar legislativo</span>
+      <span class="tool-card-desc">Leyes, decretos y proyectos de IA y energía con su estado: vigente, en trámite o pendiente.</span>
+      <span class="tool-card-cta">Ver radar legislativo &rarr;</span>
+    </a>
+    <a class="tool-card" href="{{ '/grafo/' | relative_url }}">
+      <span class="tool-card-icon">&#9883;</span>
+      <span class="tool-card-title">Grafo del Observatorio</span>
+      <span class="tool-card-desc">Mapa de relaciones entre las 19 entidades del observatorio. Quién comparte artículos, leyes y normativas.</span>
+      <span class="tool-card-cta">Explorar grafo &rarr;</span>
+    </a>
+    <a class="tool-card" href="{{ '/dashboard-energetico/' | relative_url }}">
+      <span class="tool-card-icon">&#9650;</span>
+      <span class="tool-card-title">Dashboard energético</span>
+      <span class="tool-card-desc">Potencia reservada, tarifa GCIE y consumo eléctrico de data centers en un solo tablero.</span>
+      <span class="tool-card-cta">Abrir dashboard &rarr;</span>
+    </a>
+    <a class="tool-card" href="{{ '/claims-verificados/' | relative_url }}">
+      <span class="tool-card-icon">&#10003;</span>
+      <span class="tool-card-title">Claims verificados</span>
+      <span class="tool-card-desc">El registro de verificación de datos: qué confirmamos, qué corregimos y contra qué fuente.</span>
+      <span class="tool-card-cta">Ver claims &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<section class="home-section">
+  <h2 class="home-section-title">Sobre el observatorio</h2>
+  <p class="about-mission">El observatorio que investiga cómo la IA redefine la energía, la economía y la sociedad paraguaya.</p>
+  <p class="about-text">El foco del sitio es el cluster <strong><a href="{{ '/ia-en-paraguay/' | relative_url }}">Observatorio de IA en Paraguay — Guía Completa 2026</a></strong>: una guía viva que explora cómo la energía más barata de Sudamérica, la geopolítica de los semiconductores, la regulación de datos y el talento local están configurando el futuro del país.</p>
+  <p class="about-lead">Conocé todas las secciones:</p>
+  <div class="observatorio-grid">
+    <a class="observatorio-card" href="{{ '/cronologia/' | relative_url }}">
+      <span class="observatorio-icon">&#10148;</span>
+      <span class="observatorio-label">Cronología</span>
+      <span class="observatorio-desc">Hitos desde 1973</span>
+    </a>
+    <a class="observatorio-card" href="{{ '/regulacion/' | relative_url }}">
+      <span class="observatorio-icon">&#167;</span>
+      <span class="observatorio-label">Mapa regulatorio</span>
+      <span class="observatorio-desc">Leyes y decretos</span>
+    </a>
+    <a class="observatorio-card" href="{{ '/directorio/' | relative_url }}">
+      <span class="observatorio-icon">&#9758;</span>
+      <span class="observatorio-label">Directorio</span>
+      <span class="observatorio-desc">Startups y comunidades</span>
+    </a>
+    <a class="observatorio-card" href="{{ '/casos-de-uso/' | relative_url }}">
+      <span class="observatorio-icon">&#9674;</span>
+      <span class="observatorio-label">Casos de uso</span>
+      <span class="observatorio-desc">IA en sectores reales</span>
+    </a>
+    <a class="observatorio-card" href="{{ '/entidades/' | relative_url }}">
+      <span class="observatorio-icon">&#9679;</span>
+      <span class="observatorio-label">Entidades</span>
+      <span class="observatorio-desc">Actores clave del ecosistema</span>
+    </a>
+    <a class="observatorio-card" href="{{ '/glosario/' | relative_url }}">
+      <span class="observatorio-icon">&#9734;</span>
+      <span class="observatorio-label">Glosario vivo</span>
+      <span class="observatorio-desc">Términos en contexto</span>
+    </a>
+  </div>
+</section>
+
+<section class="home-section">
+  <h2 class="home-section-title">Pulso y editorial recientes</h2>
+
+  <div class="daily-featured">
+    {% if ultimo_pulso %}
+    <a class="daily-card" href="{{ ultimo_pulso.url | relative_url }}">
+      <div class="daily-card-header">
+        <span class="badge badge-pulso">Pulso Paraguay</span>
+        <time datetime="{{ ultimo_pulso.date | date_to_xmlschema }}">{{ ultimo_pulso.date | date: "%-d %b %Y" }}</time>
+      </div>
+      <h3 class="daily-card-title">{{ ultimo_pulso.title }}</h3>
+      <p class="daily-card-desc">{% if ultimo_pulso.description %}{{ ultimo_pulso.description | strip_html }}{% else %}Reporte diario de noticias desde 15 fuentes periodísticas de Paraguay.{% endif %}</p>
+    </a>
+    {% endif %}
+
+    {% if ultima_editorial %}
+    <a class="daily-card" href="{{ ultima_editorial.url | relative_url }}">
+      <div class="daily-card-header">
+        <span class="badge badge-editorial">Editorial</span>
+        <time datetime="{{ ultima_editorial.date | date_to_xmlschema }}">{{ ultima_editorial.date | date: "%-d %b %Y" }}</time>
+      </div>
+      <h3 class="daily-card-title">{{ ultima_editorial.title }}</h3>
+      <p class="daily-card-desc">{% if ultima_editorial.description %}{{ ultima_editorial.description | strip_html }}{% else %}Análisis de opinión basado en el Pulso Paraguay del día.{% endif %}</p>
+    </a>
+    {% endif %}
+  </div>
+
+  <div class="daily-links">
+    <a class="see-all" href="{{ '/categories/#pulso-paraguay' | relative_url }}">Pulso Paraguay</a>
+    <span class="see-all-sep">&middot;</span>
+    <a class="see-all" href="{{ '/categories/#editorial' | relative_url }}">Editorial</a>
+    <span class="see-all-sep">&middot;</span>
+    <a class="see-all" href="{{ '/archive/' | relative_url }}">Ver todo el archivo &rarr;</a>
+  </div>
+</section>

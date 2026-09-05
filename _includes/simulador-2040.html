@@ -1,0 +1,337 @@
+<div class="sim-2040">
+
+  <p class="sim-eyebrow"><span class="sim-dot"></span>Modelo ilustrativo interactivo</p>
+
+  <div class="sim-chips">
+    <div class="sim-chip">
+      <div class="sim-chip-val">943,8 MW</div>
+      <div class="sim-chip-lbl">Potencia reservada para data centers y criptominer&iacute;a, agosto 2026</div>
+    </div>
+    <div class="sim-chip">
+      <div class="sim-chip-val">USD 350M</div>
+      <div class="sim-chip-lbl">Ingresos proyectados de ANDE por consumo intensivo en 2026</div>
+    </div>
+    <div class="sim-chip">
+      <div class="sim-chip-val">23%</div>
+      <div class="sim-chip-lbl">De la electricidad de Irlanda ya la consumen sus data centers</div>
+    </div>
+    <div class="sim-chip">
+      <div class="sim-chip-val">60–64%</div>
+      <div class="sim-chip-lbl">Informalidad laboral en Paraguay &mdash; el freno estructural</div>
+    </div>
+  </div>
+
+  <div class="sim-grid">
+
+    <div class="sim-panel">
+      <p class="sim-panel-title">Las cinco palancas</p>
+
+      <div class="sim-lever">
+        <div class="sim-lever-head">
+          <span class="sim-lever-name">Diversificaci&oacute;n energ&eacute;tica</span>
+          <span class="sim-lever-val" id="v-energia">50</span>
+        </div>
+        <p class="sim-lever-desc">Solar y e&oacute;lica en el Chaco (4,8-4,9 kWh/m&sup2;/d&iacute;a promedio anual), para no depender solo del Paran&aacute;.</p>
+        <input type="range" id="energia" min="0" max="100" value="50" aria-label="Diversificaci&oacute;n energ&eacute;tica">
+      </div>
+
+      <div class="sim-lever">
+        <div class="sim-lever-head">
+          <span class="sim-lever-name">Formalizaci&oacute;n laboral</span>
+          <span class="sim-lever-val" id="v-formal">50</span>
+        </div>
+        <p class="sim-lever-desc">Reducir el 60-64% de informalidad. Dos de cada tres trabajadores sin IPS ni cr&eacute;dito.</p>
+        <input type="range" id="formal" min="0" max="100" value="50" aria-label="Formalizaci&oacute;n laboral">
+      </div>
+
+      <div class="sim-lever">
+        <div class="sim-lever-head">
+          <span class="sim-lever-name">Marco regulatorio e institucional</span>
+          <span class="sim-lever-val" id="v-reg">50</span>
+        </div>
+        <p class="sim-lever-desc">Normas para data centers, Anexo C de Itaip&uacute;, cuotas de empleo local y beneficio comunitario.</p>
+        <input type="range" id="reg" min="0" max="100" value="50" aria-label="Marco regulatorio e institucional">
+      </div>
+
+      <div class="sim-lever">
+        <div class="sim-lever-head">
+          <span class="sim-lever-name">Capital humano y formaci&oacute;n</span>
+          <span class="sim-lever-val" id="v-talento">50</span>
+        </div>
+        <p class="sim-lever-desc">Multiplicar graduados STEM, reducir el HCI de 0,528 y aprovechar el bono demogr&aacute;fico antes de 2045.</p>
+        <input type="range" id="talento" min="0" max="100" value="50" aria-label="Capital humano y formaci&oacute;n">
+      </div>
+
+      <div class="sim-lever">
+        <div class="sim-lever-head">
+          <span class="sim-lever-name">Infraestructura digital</span>
+          <span class="sim-lever-val" id="v-infra">50</span>
+        </div>
+        <p class="sim-lever-desc">Red Nacional de Fibra &Oacute;ptica, 5G, conectividad rural. Backbone soberano en vez de tr&aacute;nsito por Brasil.</p>
+        <input type="range" id="infra" min="0" max="100" value="50" aria-label="Infraestructura digital">
+      </div>
+
+      <label class="sim-toggle">
+        <input type="checkbox" id="sequia">
+        <span class="sim-toggle-text"><b>Sequ&iacute;a prolongada del Paran&aacute;</b> &mdash; simula un shock como el de 2019-2022, cuando la generaci&oacute;n de Itaip&uacute; cay&oacute; 35,6%.</span>
+      </label>
+
+      <label class="sim-toggle">
+        <input type="checkbox" id="taiwan">
+        <span class="sim-toggle-text"><b>Crisis geopol&iacute;tica Taiw&aacute;n</b> &mdash; presi&oacute;n china escala, Yguaz&uacute; Digital se frena y la inversi&oacute;n extranjera se retrae.</span>
+      </label>
+    </div>
+
+    <div class="sim-panel">
+      <div class="sim-readout" id="readout">
+        <div>
+          <p class="sim-readout-label">Trayectoria a 2040</p>
+          <p class="sim-readout-scenario" id="scenario-label">Zona intermedia</p>
+        </div>
+        <div class="sim-readout-metrics">
+          <div class="sim-readout-metric">
+            <span class="sim-metric-n" id="mw-final">&mdash;</span>
+            <span class="sim-metric-u">MW data centers</span>
+          </div>
+          <div class="sim-readout-metric">
+            <span class="sim-metric-n" id="pib-final">&mdash;</span>
+            <span class="sim-metric-u">USD PIB per c&aacute;pita</span>
+          </div>
+          <div class="sim-readout-metric">
+            <span class="sim-metric-n" id="informalidad-final">&mdash;</span>
+            <span class="sim-metric-u">% informalidad</span>
+          </div>
+        </div>
+      </div>
+
+      <canvas id="sim-chart" height="260" aria-label="Proyecci&oacute;n de MW de data centers y PIB per c&aacute;pita a 2040" role="img"></canvas>
+      <div class="sim-legend">
+        <span><i style="background:var(--oc-cyan-4)"></i>MW de data centers instalados</span>
+        <span><i style="background:var(--oc-yellow-4)"></i>PIB per c&aacute;pita proyectado</span>
+        <span><i style="background:var(--oc-red-4)"></i>Tasa de informalidad</span>
+      </div>
+
+      <div class="sim-narrative" id="narrative"></div>
+
+      <p class="sim-disclaimer">
+        Modelo ilustrativo basado en datos del Observatorio de IA en Paraguay.
+        Interpola entre los tres escenarios del art&iacute;culo
+        &laquo;Paraguay 2040: un pa&iacute;s construido con datos&raquo;
+        (2.000–8.000 MW y USD 10.000–20.500 de PIB per c&aacute;pita a 2040).
+        La sequ&iacute;a replica la ca&iacute;da real de Itaip&uacute; (-35,6% en 2021).
+        No sustituye una proyecci&oacute;n oficial.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var levers = ['energia','formal','reg','talento','infra'];
+  var els = {};
+  levers.forEach(function(id){
+    els[id] = document.getElementById(id);
+    els[id].addEventListener('input', update);
+  });
+  var sequiaEl = document.getElementById('sequia');
+  sequiaEl.addEventListener('change', update);
+  var taiwanEl = document.getElementById('taiwan');
+  taiwanEl.addEventListener('change', update);
+
+  var valEls = { energia:'v-energia', formal:'v-formal', reg:'v-reg', talento:'v-talento', infra:'v-infra' };
+
+  var YEARS = [2026,2028,2030,2032,2034,2036,2038,2040];
+  var canvas = document.getElementById('sim-chart');
+  var ctx = canvas.getContext('2d');
+
+  function lerp(a,b,t){ return a + (b-a)*t; }
+  function clamp(v,lo,hi){ return v<lo?lo:v>hi?hi:v; }
+
+  function easeIn(t){ return Math.pow(t, 1.35); }
+
+  function computeSeries(){
+    var score = levers.reduce(function(s,id){ return s+Number(els[id].value); },0) / (levers.length*100);
+
+    var mwStart = 943.8, mwEnd = lerp(2000, 8000, score);
+    var pibStart = 9400, pibEnd = lerp(10000, 20500, score);
+    var infStart = 62, infEnd = lerp(62, 35, score); // formalizacion reduce informalidad de 62% a 35%
+
+    var sequia = sequiaEl.checked;
+    var taiwan = taiwanEl.checked;
+
+    var mw = [], pib = [], informalidad = [];
+
+    YEARS.forEach(function(y,i){
+      var t = easeIn(i/(YEARS.length-1));
+      mw.push(lerp(mwStart, mwEnd, t));
+      pib.push(lerp(pibStart, pibEnd, t));
+      informalidad.push(lerp(infStart, infEnd, t));
+    });
+
+    // Shock sequia: hits around 2032 (index 3), partial recovery
+    if(sequia){
+      var shockIdx = 3;
+      for(var i=shockIdx; i<mw.length; i++){
+        var recovery = Math.min(1, (i-shockIdx)/3);
+        var dampen = 1 - 0.356*(1 - recovery*0.55);
+        mw[i] = mw[i]*dampen;
+        pib[i] = pib[i]*dampen;
+        informalidad[i] = clamp(informalidad[i]*1.08, 0, 80); // sequia empuja mas informalidad
+      }
+    }
+
+    // Shock Taiwan: Yguazu Digital se frena, la inversion extranjera se retrae.
+    // En vez de un descuento porcentual, pone un techo duro a los MW y al PIB,
+    // porque el principal proyecto binacional (1000 MW) desaparece del tablero.
+    if(taiwan){
+      var mwCap = 5000;  // sin Taiwan, el techo de MW baja ~3000 MW (Yguazu + inversion asociada)
+      var pibCap = 16500;
+      var infFloor = 42;  // la informalidad no puede bajar de este piso sin estabilidad geopolitica
+      for(var i=2; i<mw.length; i++){
+        var severity = Math.min(1, (i-1)/5);
+        mw[i] = lerp(mw[i], Math.min(mw[i], mwCap), severity);
+        pib[i] = lerp(pib[i], Math.min(pib[i], pibCap), severity);
+        informalidad[i] = clamp(Math.max(informalidad[i], infFloor), 0, 80);
+      }
+    }
+
+    return {score:score, mw:mw, pib:pib, informalidad:informalidad, sequia:sequia, taiwan:taiwan};
+  }
+
+  function fmtMW(v){ return Math.round(v).toLocaleString('es-PY'); }
+  function fmtUSD(v){ return '$' + Math.round(v).toLocaleString('es-PY'); }
+  function fmtPct(v){ return Math.round(v) + '%'; }
+
+  function draw(mw, pib, informalidad){
+    var dpr = window.devicePixelRatio || 1;
+    var w = canvas.clientWidth, h = 260;
+    if(w===0) return;
+    canvas.width = w*dpr; canvas.height = h*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,w,h);
+
+    var padL = 50, padR = 50, padT = 16, padB = 28;
+    var plotW = w - padL - padR, plotH = h - padT - padB;
+
+    var mwMin = 0, mwMax = 9000;
+    var pibMin = 8000, pibMax = 22000;
+    var infMin = 25, infMax = 80;
+
+    // gridlines
+    ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+    ctx.lineWidth = 1;
+    for(var i=0;i<=4;i++){
+      var gy = padT + plotH*i/4;
+      ctx.beginPath(); ctx.moveTo(padL,gy); ctx.lineTo(w-padR,gy); ctx.stroke();
+    }
+
+    // x labels
+    ctx.fillStyle = '#868e96';
+    ctx.font = '11px ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", monospace';
+    ctx.textAlign = 'center';
+    YEARS.forEach(function(y,i){
+      var x = padL + plotW*i/(YEARS.length-1);
+      ctx.fillText(y, x, h-6);
+    });
+
+    function plotLine(series, min, max, color, dashed){
+      ctx.beginPath();
+      series.forEach(function(v,i){
+        var x = padL + plotW*i/(YEARS.length-1);
+        var y = padT + plotH*(1-(v-min)/(max-min));
+        if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      });
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2.4;
+      if(dashed) ctx.setLineDash([5,3]); else ctx.setLineDash([]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // dots
+      series.forEach(function(v,i){
+        var x = padL + plotW*i/(YEARS.length-1);
+        var y = padT + plotH*(1-(v-min)/(max-min));
+        ctx.beginPath();
+        ctx.arc(x,y,3.5,0,Math.PI*2);
+        ctx.fillStyle = color;
+        ctx.fill();
+      });
+    }
+
+    // ponytail: draw informalidad first (behind), then main lines on top
+    plotLine(informalidad, infMin, infMax, 'rgba(250,82,82,0.55)', true);
+    plotLine(mw, mwMin, mwMax, '#22b8cf');
+    plotLine(pib, pibMin, pibMax, '#fab005');
+  }
+
+  function scenarioText(score, sequia, taiwan){
+    if(sequia && taiwan){
+      return {
+        label: 'Escenario D — Tormenta perfecta',
+        color: '#fa5252',
+        text: 'Una sequ\u00EDa prolongada coincide con presi\u00F3n china sobre Taiw\u00E1n. Itaip\u00FA pierde un tercio de generaci\u00F3n y Yguaz\u00FA Digital se congela. Los data centers migran, la inversi\u00F3n se retrae y la informalidad escala. Con el proyecto binacional fuera del tablero y la energ\u00EDa en crisis, ni las mejores pol\u00EDticas internas compensan el doble shock externo.'
+      };
+    }
+    if(sequia){
+      return {
+        label: 'Escenario C — El super\u00E1vit que se fue',
+        color: '#fa5252',
+        text: 'Con una sequ\u00EDa prolongada golpeando la cuenca del Paran\u00E1, los data centers empiezan a migrar hacia redes m\u00E1s estables. El crecimiento se estanca, la informalidad repunta y el bono demogr\u00E1fico se cierra sin haberse aprovechado.'
+      };
+    }
+    if(taiwan){
+      return {
+        label: 'Escenario C — Aislamiento geopol\u00EDtico',
+        color: '#fab005',
+        text: 'La presi\u00F3n china sobre Taiw\u00E1n escala. Yguaz\u00FA Digital se congela y Paraguay pierde a su principal socio tecnol\u00F3gico. Sin ese proyecto binacional, el techo de data centers baja dr\u00E1sticamente. La inversi\u00F3n extranjera se retrae y otros aliados tardar\u00EDan a\u00F1os en llenar el vac\u00EDo. La informalidad encuentra un piso dif\u00EDcil de perforar sin estabilidad geopol\u00EDtica.'
+      };
+    }
+    if(score >= 0.66){
+      return {
+        label: 'Escenario A — Hub regional de c\u00F3mputo',
+        color: '#22b8cf',
+        text: 'Con las cinco palancas activadas, Paraguay diversifica su matriz antes de 2030, formaliza el empleo, regula con beneficio comunitario, forma talento t\u00E9cnico y construye infraestructura digital soberana. Las exportaciones de servicios digitales superan a la soja. El PIB per c\u00E1pita supera los USD 20.000.'
+      };
+    }
+    if(score <= 0.33){
+      return {
+        label: 'Escenario B — Exportador de energ\u00EDa barata',
+        color: '#fab005',
+        text: 'Los data centers siguen llegando, pero sin regulaci\u00F3n ni transferencia tecnol\u00F3gica. La informalidad se mantiene arriba del 55%. Los beneficios se concentran en ANDE y el super\u00E1vit energ\u00E9tico se agota entre 2035 y 2040, seg\u00FAn este modelo. La soja sigue siendo la principal exportaci\u00F3n.'
+      };
+    }
+    return {
+      label: 'Zona intermedia — el resultado m\u00E1s probable hoy',
+      color: '#adb5bd',
+      text: 'Con reformas parciales, Paraguay capitaliza parte de su ventaja energ\u00E9tica pero no resuelve a tiempo el cuello de botella regulatorio ni el de talento. El resultado queda entre el hub regional y la simple exportaci\u00F3n de energ\u00EDa barata.'
+    };
+  }
+
+  function update(){
+    levers.forEach(function(id){ document.getElementById(valEls[id]).textContent = els[id].value; });
+    var data = computeSeries();
+    draw(data.mw, data.pib, data.informalidad);
+
+    document.getElementById('mw-final').textContent = fmtMW(data.mw[data.mw.length-1]);
+    document.getElementById('pib-final').textContent = fmtUSD(data.pib[data.pib.length-1]);
+    document.getElementById('informalidad-final').textContent = fmtPct(data.informalidad[data.informalidad.length-1]);
+
+    var s = scenarioText(data.score, data.sequia, data.taiwan);
+    var label = document.getElementById('scenario-label');
+    label.innerHTML = s.label;
+    label.style.color = s.color;
+    document.getElementById('narrative').innerHTML = s.text;
+
+    var readout = document.getElementById('readout');
+    var borderColor = 'var(--oc-gray-7)';
+    if(data.sequia && data.taiwan) borderColor = 'rgba(250,82,82,0.5)';
+    else if(data.sequia) borderColor = 'rgba(250,82,82,0.35)';
+    else if(data.taiwan) borderColor = 'rgba(250,176,5,0.35)';
+    readout.style.borderColor = borderColor;
+  }
+
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>

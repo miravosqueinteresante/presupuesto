@@ -1,0 +1,82 @@
+# Dashboard energético — datos verificados contra AGENTS.md (ago 2026).
+# Fuentes: ANDE, Res. 49238/2024, estudio Ceare (UBA/BID), ABC Color.
+# Recordatorio: re-verificar la tarifa de ANDE cada 30 días (próxima: 7-sep-2026).
+
+kpis:
+  - label: "Potencia reservada"
+    value: "943,8 MW"
+    note: "41 empresas, agosto 2026"
+  - label: "Tarifa GCIE"
+    value: "30 US$/MWh"
+    note: "Resolución 49238/2024, hasta dic 2027"
+  - label: "Ingresos ANDE (consumo intensivo)"
+    value: "USD 350M"
+    note: "proyección 2026, +18,6% interanual"
+  - label: "Consumo nacional"
+    value: "29,4 TWh"
+    note: "2025 (29.419 GWh)"
+
+potencia_reservada:
+  - year: "2023"
+    mw: 125
+  - year: "2025"
+    mw: 822
+  - year: "2026"
+    mw: 943.8
+
+consumo_nacional:
+  - year: "2021"
+    gwh: 18583
+  - year: "2022"
+    gwh: 19635
+  - year: "2023"
+    gwh: 22079
+  - year: "2024"
+    gwh: 26154
+  - year: "2025"
+    gwh: 29419
+
+crecimiento_demanda:
+  - "5,7% (2022)"
+  - "12,4% (2023)"
+  - "18,5% (2024)"
+  - "12,5% (2025)"
+  - "21% (2026)"
+
+tarifa_gcie:
+  tarifa: "30 US$/MWh"
+  resolucion: "Resolución ANDE 49238/2024"
+  vigencia: "vigente hasta diciembre 2027"
+  eventos:
+    - fecha: "Ene–abr 2026"
+      texto: "Decretos 5306, 5307, 5860 y 5861 extienden la tarifa de 30 a 15 años para industrias convergentes y data centers."
+    - fecha: "9 jun 2026"
+      texto: "Los decretos se derogan por presión sindical y técnica interna de ANDE."
+    - fecha: "27 jul 2026"
+      texto: "Renuncia Félix Sosa, presidente de ANDE, que se negó a aplicar los decretos."
+    - fecha: "31 jul 2026"
+      texto: "El nuevo titular Miguel Báez recibe la instrucción de definir una tarifa técnica única; el informe se entregó el 31 de julio y su contenido no es público."
+
+proyeccion_tarifa:
+  fuente: "Estudio Ceare (UBA, con apoyo del BID), horizonte 2026-2030"
+  items:
+    - label: "Tarifa media"
+      actual: "49,2 US$/MWh"
+      proyectada: "68,6 US$/MWh (+39,4%)"
+    - label: "Alta y muy alta tensión"
+      actual: "35,3 US$/MWh"
+      proyectada: "51,4 US$/MWh (+45,6%)"
+    - label: "Baja tensión"
+      actual: "55,8 US$/MWh"
+      proyectada: "77,8 US$/MWh (+39,4%)"
+
+carga_efectiva:
+  - year: "2025"
+    mw: 854
+  - year: "2026"
+    mw: 803
+
+distincion:
+  - "Potencia reservada (943,8 MW) es lo contratado, no lo que se consume en cada momento."
+  - "Carga efectiva GCIE: 854 MW (2025) y 803 MW (2026)."
+  - "943,8 MW equivalen a ~13,5% de la potencia que le corresponde a Paraguay de Itaipú (7.000 MW), no de la energía anual."

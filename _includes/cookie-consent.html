@@ -1,0 +1,29 @@
+<style>
+#cookie-banner{display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#222;color:#eee;padding:1rem;font-size:0.9rem;border-top:2px solid #444}
+.cookie-banner-content{max-width:800px;margin:0 auto;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.cookie-banner-content p{margin:0;flex:1;min-width:200px}
+.cookie-banner-content a{color:#8ab4f8}
+.cookie-banner-actions{display:flex;gap:0.5rem;flex-shrink:0}
+.cookie-btn{padding:0.5rem 1rem;border:none;cursor:pointer;font-size:0.85rem;border-radius:4px}
+.cookie-btn-primary{background:#4a9eff;color:#fff}
+.cookie-btn-primary:hover{background:#3a8eef}
+.cookie-btn-secondary{background:#555;color:#eee}
+.cookie-btn-secondary:hover{background:#666}
+</style>
+<div id="cookie-banner" role="dialog" aria-label="Aviso de cookies">
+  <div class="cookie-banner-content">
+    <p>
+      Este sitio utiliza cookies de Google Analytics para entender cómo se usa y mejorar la experiencia.
+      No almacenamos información personal. Más información en nuestra
+      <a href="{{ '/privacidad/' | relative_url }}">Política de Privacidad</a>.
+    </p>
+    <div class="cookie-banner-actions">
+      <button id="cookie-accept" class="cookie-btn cookie-btn-primary">Aceptar</button>
+      <button id="cookie-reject" class="cookie-btn cookie-btn-secondary">Rechazar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){var a="muchotexto_cookie_consent";function b(){return localStorage.getItem(a)}function c(d){localStorage.setItem(a,d)}function e(){var f=document.getElementById("cookie-banner");if(f)f.style.display="none"}function g(h){typeof gtag=="function"&&gtag("consent","update",{analytics_storage:h?"granted":"denied"})}var i=b();if(i==="accepted"){e();g(true)}else if(i==="rejected"){e();g(false)}else{document.addEventListener("DOMContentLoaded",function(){var j=document.getElementById("cookie-banner");if(j)j.style.display="block";document.getElementById("cookie-accept").addEventListener("click",function(){c("accepted");e();g(true)});document.getElementById("cookie-reject").addEventListener("click",function(){c("rejected");e();g(false)})})}})();
+</script>

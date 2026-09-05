@@ -1,0 +1,212 @@
+<div class="calc-energetica">
+
+  <p class="calc-eyebrow"><span class="calc-dot"></span>Herramienta de comparación de costos</p>
+
+  <div class="calc-alert">
+    <span class="calc-alert-icon">&#9888;</span>
+    <div>
+      <p class="calc-alert-title">Estado regulatorio: en revisión activa (agosto 2026)</p>
+      <p class="calc-alert-text">
+        La tarifa de 30 US$/MWh corresponde al Grupo de Consumo Intensivo Especial de ANDE.
+        Tras la renuncia del presidente de ANDE el 27 de julio de 2026, el nuevo titular fue instruido
+        a definir una <b>tarifa técnica única</b> para nuevos proyectos — todavía sin publicar.
+        <a href="#disclaimer-detail" onclick="document.getElementById('disclaimer-detail').scrollIntoView({behavior:'smooth'});return false;">Ver detalle completo &#8595;</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="calc-grid">
+
+    <div class="calc-panel">
+      <p class="calc-panel-title">Tu proyecto</p>
+
+      <div class="calc-field">
+        <span class="calc-field-label">Capacidad instalada</span>
+        <div class="calc-mw-display" id="mw-display">100 <span>MW</span></div>
+        <input type="range" id="calc-mw" min="10" max="1000" step="10" value="100" aria-label="Capacidad instalada en MW">
+        <div class="calc-range-marks"><span>10 MW</span><span>1.000 MW</span></div>
+        <div class="calc-presets">
+          <button class="calc-preset-btn" data-mw="10">Piloto · 10 MW</button>
+          <button class="calc-preset-btn active" data-mw="100">Mediano · 100 MW</button>
+          <button class="calc-preset-btn" data-mw="300">HIVE Paraguay · 300 MW</button>
+          <button class="calc-preset-btn" data-mw="1000">Hiperescala · 1.000 MW</button>
+        </div>
+      </div>
+
+      <p class="calc-assumption">
+        Se asume operación continua (8.760 h/año, factor de carga ~100%), típico de un data center.
+        Cada país usa un rango real min–max verificado; la barra muestra el punto medio.
+      </p>
+
+      <div class="calc-howto">
+        <p class="calc-howto-title">Cómo usar esta calculadora</p>
+        <ol class="calc-howto-list">
+          <li>Ajustá la capacidad de tu proyecto con el slider o los botones de abajo.</li>
+          <li>Compará el costo anual de electricidad en 5 mercados.</li>
+          <li>Activá el escenario de riesgo regulatorio para ver qué pasa si ANDE cambia la tarifa.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="calc-panel">
+      <label class="calc-toggle">
+        <input type="checkbox" id="riskScenario">
+        <span class="calc-toggle-text"><b>Mostrar escenario de riesgo regulatorio</b> — si la nueva tarifa técnica única de ANDE se acerca a lo que proyecta el estudio Ceare 2026-2030 para alta y muy alta tensión (51,4 US$/MWh) en vez de mantenerse en 30.</span>
+      </label>
+
+      <div class="calc-headline">
+        <div class="calc-headline-item">
+          <span class="calc-hl-n" id="hl-py">—</span>
+          <span class="calc-hl-l">Costo anual en Paraguay</span>
+        </div>
+        <div class="calc-headline-item">
+          <span class="calc-hl-n" id="hl-savings">—</span>
+          <span class="calc-hl-l">Ahorro vs. Irlanda</span>
+        </div>
+        <div class="calc-headline-item">
+          <span class="calc-hl-n" id="hl-pct">—</span>
+          <span class="calc-hl-l">Energía como % del opex</span>
+        </div>
+      </div>
+
+      <p class="calc-panel-title">Costo anual de electricidad por país</p>
+      <div class="calc-bars" id="calc-bars"></div>
+
+      <div class="calc-narrative" id="narrative"></div>
+
+      <div class="calc-disclaimer" id="disclaimer-detail">
+        <p><b>Tarifas usadas (USD/MWh, rango min–max):</b><br>
+        Paraguay 30–45 · Suecia (Luleå) 45–65 · Chile 85–100 · Virginia, EE.UU. 95–130 · Irlanda (Dublín) 150–190.<br>
+        <small>Irlanda: el rango 150–190 USD/MWh corresponde a PPA de data center a gran escala.
+        Como referencia, Eurostat (abril 2026) reporta €255/MWh (~276 USD/MWh) para consumidores no-domésticos medianos
+        (500–2.000 MWh/año), lo que confirma la magnitud de la diferencia.</small></p>
+
+        <p><b>¿Por qué la tarifa de Paraguay está "en revisión"?</b><br>
+        El piso de 30 US$/MWh corresponde al Grupo de Consumo Intensivo Especial (Resolución ANDE
+        49238/2024, vigente hasta dic. 2027). Cuatro decretos presidenciales (5306, 5307, 5860, 5861, ene–abr 2026)
+        extendieron esa tarifa a 15 años para data centers, pero fueron derogados el 9 de junio de 2026.
+        El presidente de ANDE que se negó a aplicarlos, Félix Sosa, renunció el 27 de julio de 2026.
+        Su sucesor, Miguel Báez, recibió instrucción de definir una tarifa técnica única
+        — informe entregado el 31 de julio, aún no público. El escenario de riesgo se basa en el estudio
+        Ceare 2026-2030 (con apoyo del BID): proyecta la tarifa de alta y muy alta tensión de 35,3 a 51,4 US$/MWh
+        (+45,6%) y la tarifa media de 49,2 a 68,6 US$/MWh.</p>
+
+        <p><b>Nivel de verificación por país:</b><br>
+        Paraguay: fuente oficial (ANDE) pero en disputa activa.
+        Suecia: dos fuentes de mercado independientes.
+        Chile y Virginia: una fuente de mercado cada una.
+        Irlanda: dos fuentes independientes (Eurostat + fuente de mercado).</p>
+
+        <p><b>Sobre el "% de costo operativo":</b><br>
+        La cifra de 40–60% corresponde a un estudio de 2026 vía Cámara de Comercio de EE.UU.;
+        otras fuentes especializadas ubican la electricidad en 15–25% del opex.
+        Se muestra como rango por esa discrepancia real entre fuentes.</p>
+
+        <p>Esta calculadora aísla solo el componente de energía. No sustituye una cotización real ni asesoría legal o financiera.</p>
+      </div>
+
+      <p class="calc-updated">Última verificación de fuentes: 15 de agosto de 2026</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var markets = [
+    { id:'py', name:'Paraguay',          min:30,  max:45,  color:'#22b8cf', note:'30 verificado (ANDE), ~45 estimado' },
+    { id:'se', name:'Suecia (Luleå)',    min:45,  max:65,  color:'#748ffc', note:'' },
+    { id:'cl', name:'Chile',             min:85,  max:100, color:'#da77f2', note:'' },
+    { id:'va', name:'Virginia, EE.UU.',  min:95,  max:130, color:'#fab005', note:'' },
+    { id:'ie', name:'Irlanda (Dublín)',  min:150, max:190, color:'#fa5252', note:'' }
+  ];
+
+  var mwEl = document.getElementById('calc-mw');
+  var mwDisplay = document.getElementById('mw-display');
+  var barsEl = document.getElementById('calc-bars');
+  var presets = document.querySelectorAll('.calc-preset-btn');
+  var riskEl = document.getElementById('riskScenario');
+  riskEl.addEventListener('change', build);
+
+  function fmtUSD(n){
+    if(n >= 1e6) return '$' + (n/1e6).toFixed(n>=1e7?0:1) + 'M';
+    if(n >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+    return '$' + Math.round(n);
+  }
+
+  function build(){
+    barsEl.innerHTML = '';
+    var mw = Number(mwEl.value);
+    var mwh = mw * 8760;
+    var showRisk = riskEl.checked;
+
+    var rows = markets.slice();
+    if(showRisk){
+      rows.splice(1, 0, { id:'py-risk', name:'Paraguay (escenario en revisión)', min:45, max:51, color:'#adb5bd', note:'proyección Ceare alta/muy alta tensión 2030' });
+    }
+
+    var costs = rows.map(function(m){
+      var midRate = (m.min+m.max)/2;
+      return {
+        name: m.name, id: m.id, min: m.min, max: m.max,
+        midRate: midRate, cost: mwh * midRate, color: m.color, note: m.note || ''
+      };
+    });
+
+    var maxCost = Math.max.apply(null, costs.map(function(c){ return c.cost; }));
+
+    costs.forEach(function(c){
+      var pct = (c.cost/maxCost)*100;
+      var row = document.createElement('div');
+      row.className = 'calc-bar-row';
+      var noteHtml = c.note ? '<span class="calc-bar-note">' + c.note + '</span>' : '';
+      row.innerHTML =
+        '<div class="calc-bar-head' + (c.note ? ' calc-bar-head-note' : '') + '">' +
+          '<span class="calc-bar-market">' + c.name + '</span>' +
+          '<span class="calc-bar-rate">USD ' + c.min + '–' + c.max + ' /MWh</span>' +
+          noteHtml +
+        '</div>' +
+        '<div class="calc-bar-track"' + (c.id === 'py-risk' ? ' style="border-style:dashed;opacity:0.7"' : '') + '>' +
+          '<div class="calc-bar-fill' + (pct < 20 ? ' calc-bar-fill-outside' : '') + '" style="width:' + pct + '%;background:' + c.color + '">' +
+            '<span>' + fmtUSD(c.cost) + '/año</span>' +
+          '</div>' +
+        '</div>';
+      barsEl.appendChild(row);
+    });
+
+    var py = costs.find(function(c){ return c.id==='py'; });
+    var ie = costs.find(function(c){ return c.id==='ie'; });
+    var va = costs.find(function(c){ return c.id==='va'; });
+    var savings = ie ? ie.cost - py.cost : 0;
+
+    document.getElementById('hl-py').textContent = fmtUSD(py.cost);
+    document.getElementById('hl-savings').textContent = fmtUSD(savings);
+    document.getElementById('hl-pct').textContent = '15–60%';
+
+    var riskNote = showRisk
+      ? ' El estudio Ceare (con apoyo del BID) proyecta que la tarifa de alta y muy alta tensión suba de 35,3 a 51,4 US$/MWh entre 2026 y 2030, y la tarifa media de 49,2 a 68,6. Si la tarifa técnica única que ANDE está definiendo se acerca a esos niveles, la ventaja frente a Virginia se reduce pero Paraguay seguiría siendo más barato que Irlanda.'
+      : '';
+
+    document.getElementById('narrative').innerHTML =
+      'Para <b>' + mw.toLocaleString('es-PY') + ' MW</b> operando todo el año, la electricidad en Paraguay costaría ' +
+      'alrededor de <b>' + fmtUSD(py.cost) + ' al año</b> con la tarifa actual — frente a <b>' + fmtUSD(ie.cost) + '</b> en ' +
+      'Irlanda y <b>' + fmtUSD(va.cost) + '</b> en Virginia. Esa tarifa está bajo revisión activa por parte de ANDE al ' +
+      'momento de esta verificación (agosto 2026), así que tratala como un punto de partida, no como un compromiso contractual.' + riskNote;
+  }
+
+  mwEl.addEventListener('input', function(){
+    mwDisplay.innerHTML = Number(mwEl.value).toLocaleString('es-PY') + ' <span>MW</span>';
+    presets.forEach(function(b){ b.classList.toggle('active', Number(b.dataset.mw)===Number(mwEl.value)); });
+    build();
+  });
+
+  presets.forEach(function(b){
+    b.addEventListener('click', function(){
+      mwEl.value = b.dataset.mw;
+      mwEl.dispatchEvent(new Event('input'));
+    });
+  });
+
+  build();
+})();
+</script>
