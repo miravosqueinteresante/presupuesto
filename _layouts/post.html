@@ -55,14 +55,14 @@ layout: default
     "@type": "Article",
     "headline": {{ page.title | jsonify }},
     "description": {{ page.description | jsonify }},
-    "image": "{{ site.url }}{{ page.image | default: '/assets/images/og-image.png' }}",
+    "image": "{{ site.url }}{{ page.image | default: '/' }}",
     "datePublished": "{{ page.date | date_to_xmlschema }}",
     "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
-    "author": { "@id": "https://muchotexto.net/#author", "name": "César Sánchez" },
+    "author": { "@id": "https://muchotexto.net/#author", "name": "MuchoTexto" },
     "publisher": {
       "@id": "https://muchotexto.net/#org",
       "name": "MuchoTexto",
-      "logo": { "@type": "ImageObject", "url": "{{ site.url }}/assets/images/og-image.png" }
+      "logo": { "@type": "ImageObject", "url": "{{ site.url }}/" }
     },
     "mainEntityOfPage": "{{ site.url }}{{ page.url }}"
   }
@@ -90,7 +90,7 @@ layout: default
       {%- endif -%}
     {%- endif -%}
     <span class="post-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
-      <a href="{{ '/about' | relative_url }}" rel="author"><span itemprop="name">César Sánchez</span></a>
+      <a href="{{ '/about' | relative_url }}" rel="author"><span itemprop="name">MuchoTexto</span></a>
     </span>
     {% if page.categories.size > 0 %}
       <span> | </span>
@@ -153,16 +153,16 @@ layout: default
   {% include share.html %}
 
   <div class="author-bio">
-    <div class="author-bio-avatar"><img src="{{ '/assets/images/cesar-sanchez.webp' | relative_url }}" alt="César Sánchez" width="56" height="56" loading="lazy"></div>
+    <div class="author-bio-avatar"><img src="{{ '/assets/images/' | relative_url }}" alt="MuchoTexto" width="56" height="56" loading="lazy"></div>
     <div class="author-bio-content">
-      <p class="author-bio-name">César Sánchez</p>
+      <p class="author-bio-name">MuchoTexto</p>
       <p class="author-bio-text">Consultor en automatización con IA generativa, anotación de datos para modelos de lenguaje y desarrollo de soluciones basadas en IA aplicada. Fundó en 2005 uno de los primeros medios digitales sobre tecnología en Paraguay y ha trabajado con marcas como Coca-Cola en generación de contenido con IA. Creador del <a href="{{ '/' | relative_url }}">observatorio de IA en Paraguay</a>.</p>
       <p class="author-bio-links">
         <a href="{{ '/about/' | relative_url }}">Sobre el autor</a>
          |
         <a href="https://x.com/cesanz" target="_blank" rel="noopener noreferrer">Twitter</a>
          |
-        <a href="https://www.linkedin.com/in/cesar-sanchez-melgarejo/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/-melgarejo/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </p>
     </div>
   </div>

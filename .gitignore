@@ -20,3 +20,11 @@ linkedin_post_muchotexto.md
 borrador_media_kit.md
 scripts/.indexnow_cache.json
 _planning/
+# Seguridad / secretos (higiene)
+.env*
+*.pem
+*.key
+*.p12
+credential*
+secrets.json
+firebase*
